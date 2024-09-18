@@ -17,14 +17,14 @@ class AuthoritiesTableSeeder extends Seeder
         $param = [
             'authority' => 1,
         ];
-        DB::table('authors')->insert($param);
+        DB::table('authorities')->insert($param);
         $param = [
             'authority' => 2,
         ];
-        DB::table('authors')->insert($param);
+        DB::table('authorities')->insert($param);
         $param = [
             'authority' => 3,
         ];
-        DB::table('authors')->insert($param);
+        DB::table('authorities')->insert($param);
     }
 }
