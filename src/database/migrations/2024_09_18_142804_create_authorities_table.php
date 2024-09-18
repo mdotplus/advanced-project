@@ -15,7 +15,7 @@ class CreateAuthoritiesTable extends Migration
     {
         Schema::create('authorities', function (Blueprint $table) {
             $table->id();
-            $table->integer('authority');
+            $table->integer('authority')->comment('1:管理者/2:店舗代表者/3:利用者');
             $table->timestamps();
         });
     }
