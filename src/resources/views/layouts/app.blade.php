@@ -25,9 +25,24 @@
     </header>
 
     <main>
+        <div class="modal__background">
+            <div class="modal__contents">
+                <button class="modal__contents--button-close">
+                    <img class="modal__contents--image-close" src="img/menu-close.png" alt="close">
+                </button>
+                <ul class="modal__contents--list">
+                    <li><a href="/">Home</a></li>
+                    <li>Registration</li>
+                    <li>Login</li>
+                    <li>Mypage</li>
+                    <li>Adminpage</li>
+                </ul>
+            </div>
+        </div>
         <div class="background">
             @yield('content')
         </div>
+        <script src="{{ asset('/js/index.js') }}"></script>
     </main>
 
     <footer>
