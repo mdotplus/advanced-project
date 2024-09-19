@@ -14,4 +14,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [IndexController::class, 'index']);
+Route::group(['middleware' => ['verified', 'auth']], function () {
+    Route::get('/', [IndexController::class, 'index']);
+});
