@@ -87,7 +87,6 @@
     position: relative;
     top: 50px;
     text-align: center;
-    color: #3560f6;
     list-style: none;
 }
 
@@ -95,20 +94,26 @@
     margin: 10px;
 }
 
-.modal__contents--list li a {
+.modal__contents--list li a,
+.modal__contents--list li form input {
     color: #3560f6;
+    background: #fff;
+    font-size: 18px;
     text-decoration: none;
+    border: none;
+    outline: none;
+    cursor: pointer;
 }
 
 .modal__background.is-open {
-  z-index: 999;
-  opacity: 1;
-  visibility: visible;
+    z-index: 999;
+    opacity: 1;
+    visibility: visible;
 }
 
 .modal__background.is-open .modal__contents {
-  opacity: 1;
-  visibility: visible;
+    opacity: 1;
+    visibility: visible;
 }
 
 .background {

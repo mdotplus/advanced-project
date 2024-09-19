@@ -32,10 +32,20 @@
                 </button>
                 <ul class="modal__contents--list">
                     <li><a href="/">Home</a></li>
-                    <li>Registration</li>
-                    <li>Login</li>
-                    <li>Mypage</li>
-                    <li>Adminpage</li>
+                    @guest
+                        <li><a href="/register">Register</a></li>
+                        <li><a href="/login">Login</a></li>
+                    @endguest
+                    @auth
+                        <li>
+                            <form action="/logout" method="post">
+                                @csrf
+                                <input type="submit" value="Logout">
+                            </form>
+                        </li>
+                        <li><a href="/mypage">Mypage</a></li>
+                        <li><a href="/adminpage">Adminpage</a></li>
+                    @endauth
                 </ul>
             </div>
         </div>
