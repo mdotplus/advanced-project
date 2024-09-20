@@ -5,21 +5,29 @@
 @endsection
 
 @section('content')
-    <div class="body-contents">
-        <h2>ログイン</h2>
-        <form class="form-contents" action="/login" method="post">
-            @csrf
-            <input class="input-box" type="email" name="email" value="{{ old('email') }}" placeholder="メールアドレス">
-            @error('email')
-                {{ $message }}
-            @enderror
-            <input class="input-box" type="password" name="password" placeholder="パスワード">
-            @error('password')
-                {{ $message }}
-            @enderror
-            <button class="button-submit" type="submit">ログイン</button>
-        </form>
-        <p class="text">アカウントをお持ちでない方はこちらから</p>
-        <a class="link" href="/register">会員登録</a>
+    <div class="background">
+        <div class="card">
+            <div class="card__title">
+                Login
+            </div>
+            <form class="card__contents" action="/login" method="post">
+                @csrf
+                <div>
+                    <img src="img/email.png" alt="メールのアイコン">
+                    <input class="card__contents__input-box" type="text" name="email" value="{{ old('email') }}" placeholder="Email">
+                    @error('email')
+                        {{ $message }}
+                    @enderror
+                </div>
+                <div>
+                    <img src="img/password.png" alt="鍵のアイコン">
+                    <input class="card__contents__input-box" type="password" name="password" placeholder="Password">
+                    @error('password')
+                        {{ $message }}
+                    @enderror
+                </div>
+                <button class="card__contents--button-submit" type="submit">ログイン</button>
+            </form>
+        </div>
     </div>
 @endsection

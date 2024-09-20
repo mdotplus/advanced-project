@@ -1,49 +1,48 @@
-.body-contents {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-top: 30px;
-    padding-bottom: 70px;
+.card {
+    background: #fff;
+    width: 400px;
+    margin: 200px auto;
 }
 
-.form-contents {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-}
-
-.input-box {
-    display: block;
-    width: 40%;
-    max-width: 400px;
-    height: 50px;
-    border: 1px solid #848484;
-    border-radius: 5px;
-    margin: 10px;
-    padding: 10px;
-}
-
-.button-submit {
-    display: block;
-    background-color: #214BE0;
+.card__title {
+    background: #3560f6;
     color: #fff;
-    width: 40%;
-    max-width: 400px;
-    height: 50px;
-    border: 1px solid #214BE0;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 15px 20px;
+}
+
+.card__contents {
+    background: #fff;
+}
+
+.card__contents div {
+    padding: 5px 30px;
+}
+
+.card__contents div:first-of-type {
+    margin-top: 10px;
+}
+
+.card__contents__input-box {
+    width: 80%;
+    height: 40px;
+    border: none;
+    outline: none;
+    border-bottom: 2px solid #999;
+    font-size: 18px;
+    margin: 5px;
+    padding: 5px;
+}
+
+.card__contents--button-submit {
+    width: 80px;
+    height: 40px;
+    background: #3560f6;
+    color: #fff;
+    font-weight: bold;
+    border: 1px solid #3560f6;
     border-radius: 5px;
-    font-weight: bold;
-    margin: 10px;
-}
-
-.text {
-    color: #b0b0b0;
-    margin-bottom: 2px;
-}
-
-.link {
-    color: #214BE0;
-    text-decoration: none;
-    font-weight: bold;
+    margin: 10px auto 20px 280px;
+    cursor: pointer;
 }

@@ -20,7 +20,12 @@
             <a class="header__logo" href="/">
                 Rese
             </a>
-            <a class="header__welcome" href="">〇〇〇 さん</a>
+            @auth
+                <a class="header__welcome" href="/mypage">{{ Auth::user()->name }} さん</a>
+            @endauth
+            @guest
+                <a class="header__welcome" href="/mypage">ゲスト さん</a>
+            @endguest
         </div>
     </header>
 
@@ -54,10 +59,6 @@
         </div>
         <script src="{{ asset('/js/index.js') }}"></script>
     </main>
-
-    <footer>
-        <small>Rese, inc.</small>
-    </footer>
 </body>
 
 </html>

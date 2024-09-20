@@ -5,26 +5,36 @@
 @endsection
 
 @section('content')
-    <div class="body-contents">
-        <h2>会員登録</h2>
-        <form class="form-contents" action="/register" method="post">
-            @csrf
-            <input class="input-box" type="text" name="name" value="{{ old('name') }}" placeholder="名前">
-            @error('name')
-                {{ $errors->first('name') }}
-            @enderror
-            <input class="input-box" type="text" name="email" value="{{ old('email') }}" placeholder="メールアドレス">
-            @error('email')
-                {{ $message }}
-            @enderror
-            <input class="input-box" type="password" name="password" placeholder="パスワード">
-            @error('password')
-                {{ $message }}
-            @enderror
-            <input class="input-box" type="password" name="password_confirmation" placeholder="確認用パスワード">
-            <button class="button-submit" type="submit">会員登録</button>
-        </form>
-        <p class="text">アカウントをお持ちの方はこちらから</p>
-        <a class="link" href="/login">ログイン</a>
+    <div class="background">
+        <div class="card">
+            <div class="card__title">
+                Registration
+            </div>
+            <form class="card__contents" action="/register" method="post">
+                @csrf
+                <div>
+                    <img src="img/person.png" alt="人のアイコン">
+                    <input class="card__contents__input-box" type="text" name="name" value="{{ old('name') }}" placeholder="Username">
+                    @error('name')
+                        {{ $message }}
+                    @enderror
+                </div>
+                <div>
+                    <img src="img/email.png" alt="メールのアイコン">
+                    <input class="card__contents__input-box" type="text" name="email" value="{{ old('email') }}" placeholder="Email">
+                    @error('email')
+                        {{ $message }}
+                    @enderror
+                </div>
+                <div>
+                    <img src="img/password.png" alt="鍵のアイコン">
+                    <input class="card__contents__input-box" type="password" name="password" placeholder="Password">
+                    @error('password')
+                        {{ $message }}
+                    @enderror
+                </div>
+                <button class="card__contents--button-submit" type="submit">登録</button>
+            </form>
+        </div>
     </div>
 @endsection
