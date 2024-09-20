@@ -24,6 +24,10 @@
     margin-top: 10px;
 }
 
+.error {
+    color: #eb3223;
+}
+
 .card__contents__input-box {
     width: 80%;
     height: 40px;

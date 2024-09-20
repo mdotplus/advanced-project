@@ -16,21 +16,21 @@
                     <img src="img/person.png" alt="人のアイコン">
                     <input class="card__contents__input-box" type="text" name="name" value="{{ old('name') }}" placeholder="Username">
                     @error('name')
-                        {{ $message }}
+                        <div class="error">{{ $message }}</div>
                     @enderror
                 </div>
                 <div>
                     <img src="img/email.png" alt="メールのアイコン">
                     <input class="card__contents__input-box" type="text" name="email" value="{{ old('email') }}" placeholder="Email">
                     @error('email')
-                        {{ $message }}
+                        <div class="error">{{ $message }}</div>
                     @enderror
                 </div>
                 <div>
                     <img src="img/password.png" alt="鍵のアイコン">
                     <input class="card__contents__input-box" type="password" name="password" placeholder="Password">
                     @error('password')
-                        {{ $message }}
+                        <div class="error">{{ $message }}</div>
                     @enderror
                 </div>
                 <button class="card__contents--button-submit" type="submit">登録</button>
