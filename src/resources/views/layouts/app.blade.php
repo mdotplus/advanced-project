@@ -55,8 +55,8 @@
             </div>
         </div>
         <div class="background">
-            @yield('content')
         </div>
+        @yield('content')
         <script src="{{ asset('/js/index.js') }}"></script>
     </main>
 </body>
