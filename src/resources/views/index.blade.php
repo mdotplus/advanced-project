@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends ('layouts.app')
 
 @section ('css')
     <link rel="stylesheet" href="{{ asset('css/index.css') }}">
@@ -8,7 +8,7 @@
     <div class="cards">
         @foreach ($shops as $shop)
             <div class="card">
-                <img class="card__image" src="{{ $shop->image_url }}" alt="写真">
+                <img class="card__image" src="{{ $shop->image_url }}" alt="店舗写真">
                 <div class="card__contents">
                     <div class="card__name">
                         {{ $shop->name }}
@@ -21,7 +21,7 @@
                         <span class="card__five-point-scale" style="--score: 2.3"></span>
                     </div>
                     <div class="card__click-contents">
-                        <form class="card__detail" action="" method="post">
+                        <form class="card__detail" action="/detail/{{ $shop->id }}" method="get">
                             @csrf
                             <button class="card__detail-button" type="submit">詳しくみる</button>
                         </form>

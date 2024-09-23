@@ -17,4 +17,11 @@ class IndexController extends Controller
     {
         return view('auth/thanks');
     }
+
+    public function detail($shopId)
+    {
+        $shop = Shop::find($shopId);
+
+        return view('detail', ['shop' => $shop]);
+    }
 }
