@@ -1,10 +1,10 @@
-@extends('layouts.app')
+@extends ('layouts.app')
 
-@section('css')
+@section ('css')
     <link rel="stylesheet" href="{{ asset('css/thanks.css') }}">
 @endsection
 
-@section('content')
+@section ('content')
     <div class="card">
         <div class="card__contents">
             <div class="thanks-contents">
