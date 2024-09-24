@@ -6,7 +6,7 @@
 
 @section ('content')
     <div class="cards">
-        @foreach ($shops as $shop)
+    @foreach ($shops as $shop)
             <div class="card">
                 <img class="card__image" src="{{ $shop->image_url }}" alt="店舗写真">
                 <div class="card__contents">
@@ -25,9 +25,15 @@
                             @csrf
                             <button class="card__detail-button" type="submit">詳しくみる</button>
                         </form>
-                        <form class="card__favorite" action="" method="post">
+                        <form class="card__favorite" action="/favorite/{{ Auth::id() }}/{{ $shop->id }}" method="post">
                             @csrf
-                            <button class="card__favorite-button" type="submit">♥</button>
+                            <button class="card__favorite-button" type="submit">
+                                @if (in_array($shop->id, $favoriteShops))
+                                    <image class="card__favorite--heart-image" src="{{ asset('img/heart-red.png') }}" alt="赤色のハート">
+                                @else
+                                    <image class="card__favorite--heart-image" src="{{ asset('img/heart-gray.png') }}" alt="灰色のハート">
+                                @endif
+                            </button>
                         </form>
                     </div>
                 </div>
