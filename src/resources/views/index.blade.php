@@ -11,13 +11,13 @@
     </div>
     <div class="search-box">
         <select class="search-box__area">
-            <option value="" selected disabled>All area</option>
+            <option value="All area" selected>All area</option>
             @foreach ($selectOptions['areas'] as $selectOption)
                 <option value="{{ $selectOption['area'] }}">{{ $selectOption['area'] }}</option>
             @endforeach
         </select>
         <select class="search-box__genre">
-            <option value="" selected disabled>All genre</option>
+            <option value="All genre" selected>All genre</option>
             @foreach ($selectOptions['categories'] as $selectOption)
                 <option value="{{ $selectOption['category'] }}">{{ $selectOption['category'] }}</option>
             @endforeach
@@ -35,8 +35,8 @@
                     <div class="card__id" hidden>{{ $shop->id }}</div>
                     <div class="card__name">{{ $shop->name }}</div>
                     <div class="card__hashtag">
-                        <span class="card__hashtag--area">#{{ $shop->area['area'] }}</span>
-                        <span class="card__hashtag--category">#{{ $shop->category['category'] }}</span>
+                        #<span class="card__hashtag--area">{{ $shop->area['area'] }}</span>
+                        #<span class="card__hashtag--category">{{ $shop->category['category'] }}</span>
                     </div>
                     <div class="card__five-point-scale-frame">
                         <span class="card__five-point-scale" style="--score: 2.3"></span>
