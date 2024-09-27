@@ -29,9 +29,7 @@
                 @endguest
             </div>
             <div class="header__frame--right">
-                @auth
-                    @yield ('searchInHeader')
-                @endauth
+                @yield ('searchInHeader')
             </div>
         </div>
     </header>
