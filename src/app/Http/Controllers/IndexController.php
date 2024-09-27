@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Area;
+use App\Models\Category;
 use App\Models\Shop;
 use App\Models\Favorite;
 use Illuminate\Http\Request;
@@ -11,12 +13,18 @@ class IndexController extends Controller
 {
     public function index()
     {
+        $selectOptions = [
+            'areas' => Area::all(),
+            'categories' => Category::all(),
+        ];
+
         $shops = Shop::all();
         $favoriteShops = Favorite::getFavoriteShops(Auth::id());
 
         return view('index', [
             'shops' => $shops,
             'favoriteShops' => $favoriteShops,
+            'selectOptions' => $selectOptions,
         ]);
     }
 

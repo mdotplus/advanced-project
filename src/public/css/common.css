@@ -4,10 +4,16 @@
 
 .header__frame {
     display: flex;
-    align-items: flex-end;
-    margin: 0 auto;
+    justify-content: space-between;
     padding: 10px 20px;
-    max-width: 1230px;
+}
+
+.header__frame--left {
+    margin-left: 0;
+}
+
+.header__frame--right {
+    margin-right: 0;
 }
 
 .header__menu--button {

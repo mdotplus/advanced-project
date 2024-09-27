@@ -14,18 +14,25 @@
 <body>
     <header class="header">
         <div class="header__frame">
-            <button class="header__menu--button">
-                <img class="header__menu--image" src="{{ asset('img/menu.png') }}" alt="menu">
-            </button>
-            <a class="header__logo" href="/">
-                Rese
-            </a>
-            @auth
-                <a class="header__welcome" href="/mypage">{{ Auth::user()->name }} さん</a>
-            @endauth
-            @guest
-                <a class="header__welcome" href="/mypage">ゲスト さん</a>
-            @endguest
+            <div class="header__frame--left">
+                <button class="header__menu--button">
+                    <img class="header__menu--image" src="{{ asset('img/menu.png') }}" alt="menu">
+                </button>
+                <a class="header__logo" href="/">
+                    Rese
+                </a>
+                @auth
+                    <a class="header__welcome" href="/mypage">{{ Auth::user()->name }} さん</a>
+                @endauth
+                @guest
+                    <a class="header__welcome" href="/mypage">ゲスト さん</a>
+                @endguest
+            </div>
+            <div class="header__frame--right">
+                @auth
+                    @yield ('searchInHeader')
+                @endauth
+            </div>
         </div>
     </header>
 
@@ -54,10 +61,9 @@
                 </ul>
             </div>
         </div>
-        <div class="background">
-        </div>
+        <div class="background"></div>
         @yield ('content')
-        <script src="{{ asset('/js/index.js') }}"></script>
+        <script src="{{ asset('/js/app.js') }}"></script>
     </main>
 </body>
 
