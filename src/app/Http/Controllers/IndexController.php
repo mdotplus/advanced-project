@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ReservationRequest;
 use App\Models\Area;
 use App\Models\Category;
 use App\Models\Shop;
@@ -40,7 +41,7 @@ class IndexController extends Controller
         return view('detail', ['shop' => $shop]);
     }
 
-    public function reservation(Request $request)
+    public function reservation(ReservationRequest $request)
     {
         Reservation::create($request->all());
         return view('done');

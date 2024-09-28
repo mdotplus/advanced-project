@@ -27,6 +27,9 @@
                 <input name="user_id" value="{{ Auth::id() }}" hidden>
                 <input name="shop_id" value="{{ $shop->id }}" hidden>
                 <input class="reservation__date" type="date" name="date" min="">
+                @error ('date')
+                    <div class="error">{{ $message }}</div>
+                @enderror
                 <select class="reservation__time" name="time">
                     <option value="" selected disabled>時間</option>
                     <option value="09:00">09:00</option>
@@ -55,6 +58,9 @@
                     <option value="20:30">20:30</option>
                     <option value="21:00">21:00</option>
                 </select>
+                @error ('time')
+                    <div class="error">{{ $message }}</div>
+                @enderror
                 <select class="reservation__number" name="number">
                     <option value="" selected disabled>人数</option>
                     <option value=1>1人</option>
@@ -68,6 +74,9 @@
                     <option value=9>9人</option>
                     <option value=10>10人</option>
                 </select>
+                @error ('number')
+                    <div class="error">{{ $message }}</div>
+                @enderror
             </div>
             <div class="reservation__summary">
                 <div class="reservation__summary--labels">

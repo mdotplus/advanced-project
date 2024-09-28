@@ -115,3 +115,9 @@
     border-radius: 0 0 10px 10px;
     cursor: pointer;
 }
+
+.error {
+    color: #eb3223;
+    font-weight: bold;
+    margin-left: 10px;
+}
