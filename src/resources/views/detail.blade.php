@@ -20,11 +20,16 @@
             </div>
             <p class="shop__profile">{{ $shop->profile }}</p>
         </div>
-        <form class="reservation" action="" method="post">
+        <form class="reservation" action="/done" method="post">
             @csrf
             <div class="reservation__title">予約</div>
             <div class="reservation__input-contents">
-                <input class="reservation__date" type="date">
+                <input name="user_id" value="{{ Auth::id() }}" hidden>
+                <input name="shop_id" value="{{ $shop->id }}" hidden>
+                <input class="reservation__date" type="date" name="date" min="">
+                @error ('date')
+                    <div class="error">{{ $message }}</div>
+                @enderror
                 <select class="reservation__time" name="time">
                     <option value="" selected disabled>時間</option>
                     <option value="09:00">09:00</option>
@@ -53,19 +58,25 @@
                     <option value="20:30">20:30</option>
                     <option value="21:00">21:00</option>
                 </select>
+                @error ('time')
+                    <div class="error">{{ $message }}</div>
+                @enderror
                 <select class="reservation__number" name="number">
                     <option value="" selected disabled>人数</option>
-                    <option value=1>1</option>
-                    <option value=2>2</option>
-                    <option value=3>3</option>
-                    <option value=4>4</option>
-                    <option value=5>5</option>
-                    <option value=6>6</option>
-                    <option value=7>7</option>
-                    <option value=8>8</option>
-                    <option value=9>9</option>
-                    <option value=10>10</option>
+                    <option value=1>1人</option>
+                    <option value=2>2人</option>
+                    <option value=3>3人</option>
+                    <option value=4>4人</option>
+                    <option value=5>5人</option>
+                    <option value=6>6人</option>
+                    <option value=7>7人</option>
+                    <option value=8>8人</option>
+                    <option value=9>9人</option>
+                    <option value=10>10人</option>
                 </select>
+                @error ('number')
+                    <div class="error">{{ $message }}</div>
+                @enderror
             </div>
             <div class="reservation__summary">
                 <div class="reservation__summary--labels">
@@ -76,12 +87,13 @@
                 </div>
                 <div class="reservation__summary--contents">
                     <span>{{ $shop->name }}</span>
-                    <span>2024-04-01</span>
-                    <span>17:00</span>
-                    <span>1人</span>
+                    <span class="reservation__summary--contents-date">-</span>
+                    <span class="reservation__summary--contents-time">-</span>
+                    <span class="reservation__summary--contents-number">-</span>
                 </div>
             </div>
             <button class="reservation__button" type="submit">予約する</button>
         </form>
     </div>
+    <script src="{{ asset('/js/detail.js') }}"></script>
 @endsection

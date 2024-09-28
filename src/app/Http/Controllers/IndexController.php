@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ReservationRequest;
 use App\Models\Area;
 use App\Models\Category;
 use App\Models\Shop;
 use App\Models\Favorite;
+use App\Models\Reservation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -37,6 +39,12 @@ class IndexController extends Controller
     {
         $shop = Shop::find($shopId);
         return view('detail', ['shop' => $shop]);
+    }
+
+    public function reservation(ReservationRequest $request)
+    {
+        Reservation::create($request->all());
+        return view('done');
     }
 
     public function favorite($userId, $shopId)
