@@ -8,7 +8,7 @@
                     <div class="card__id" hidden>{{ $shop->shop_id }}</div>
                     <div class="reservations-past-card__name">{{ $shop->shop->name }}</div>
                     <div class="reservations-past-card__click-contents">
-                        <form class="reservations-past-card__detail" action="/detail/{{ $shop->shop_id }}" method="get">
+                        <form class="reservations-past-card__detail" action="/detail/{{ $shop->shop_id }}/mypage" method="get">
                             @csrf
                             <button class="reservations-past-card__detail-button" type="submit">詳細</button>
                         </form>

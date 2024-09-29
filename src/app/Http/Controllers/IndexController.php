@@ -35,10 +35,13 @@ class IndexController extends Controller
         return view('auth/thanks');
     }
 
-    public function detail($shopId)
+    public function detail($shopId, $redirectPath)
     {
         $shop = Shop::find($shopId);
-        return view('detail', ['shop' => $shop]);
+        return view('detail', [
+            'shop' => $shop,
+            'redirectPath' => $redirectPath === 'home' ? '' : $redirectPath,
+        ]);
     }
 
     public function reservation(ReservationRequest $request)

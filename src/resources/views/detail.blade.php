@@ -8,7 +8,7 @@
     <div class="contents">
         <div class="shop">
             <div class="title-group">
-                <a class="button-back" href="/">
+                <a class="button-back" href="/{{ $redirectPath }}">
                     <img class="button-back__image" src="{{ asset('img/back.png') }}" alt="back">
                 </a>
                 <div class="shop__name">{{ $shop->name }}</div>

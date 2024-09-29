@@ -42,7 +42,7 @@
                         <span class="card__five-point-scale" style="--score: 2.3"></span>
                     </div>
                     <div class="card__click-contents">
-                        <form class="card__detail" action="/detail/{{ $shop->id }}" method="get">
+                        <form class="card__detail" action="/detail/{{ $shop->id }}/home" method="get">
                             @csrf
                             <button class="card__detail-button" type="submit">詳しくみる</button>
                         </form>

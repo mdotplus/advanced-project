@@ -16,7 +16,7 @@
                             <span class="favorites-card__five-point-scale" style="--score: 2.3"></span>
                         </div>
                         <div class="favorites-card__click-contents">
-                            <form class="favorites-card__detail" action="/detail/{{ $shop->id }}" method="get">
+                            <form class="favorites-card__detail" action="/detail/{{ $shop->id }}/mypage" method="get">
                                 @csrf
                                 <button class="favorites-card__detail-button" type="submit">詳しくみる</button>
                             </form>
