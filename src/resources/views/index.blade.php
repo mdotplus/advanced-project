@@ -42,14 +42,14 @@
                         <span class="card__five-point-scale" style="--score: 2.3"></span>
                     </div>
                     <div class="card__click-contents">
-                        <form class="card__detail" action="/detail/{{ $shop->id }}" method="get">
+                        <form class="card__detail" action="/detail/{{ $shop->id }}/home" method="get">
                             @csrf
                             <button class="card__detail-button" type="submit">詳しくみる</button>
                         </form>
-                        <form class="card__favorite" action="/favorite/{{ Auth::id() }}/{{ $shop->id }}" method="post">
+                        <form class="card__favorite" action="/favorite/{{ Auth::id() }}/{{ $shop->id }}/home" method="post">
                             @csrf
                             <button class="card__favorite-button" type="submit">
-                                @if (in_array($shop->id, $favoriteShops))
+                                @if (in_array($shop->id, $favoriteShopIds))
                                     <image class="card__favorite--heart-image" src="{{ asset('img/heart-red.svg') }}" alt="赤色のハート">
                                 @else
                                     <image class="card__favorite--heart-image" src="{{ asset('img/heart-gray.svg') }}" alt="灰色のハート">

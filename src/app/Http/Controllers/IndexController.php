@@ -21,11 +21,11 @@ class IndexController extends Controller
         ];
 
         $shops = Shop::all();
-        $favoriteShops = Favorite::getFavoriteShops(Auth::id());
+        $favoriteShopIds = Favorite::getFavoriteShopIds(Auth::id());
 
         return view('index', [
             'shops' => $shops,
-            'favoriteShops' => $favoriteShops,
+            'favoriteShopIds' => $favoriteShopIds,
             'selectOptions' => $selectOptions,
         ]);
     }
@@ -35,10 +35,13 @@ class IndexController extends Controller
         return view('auth/thanks');
     }
 
-    public function detail($shopId)
+    public function detail($shopId, $redirectPath)
     {
         $shop = Shop::find($shopId);
-        return view('detail', ['shop' => $shop]);
+        return view('detail', [
+            'shop' => $shop,
+            'redirectPath' => $redirectPath === 'home' ? '' : $redirectPath,
+        ]);
     }
 
     public function reservation(ReservationRequest $request)
@@ -47,13 +50,30 @@ class IndexController extends Controller
         return view('done');
     }
 
-    public function favorite($userId, $shopId)
+    public function favorite($userId, $shopId, $redirectPath)
     {
         Favorite::create([
             'user_id' => $userId,
             'shop_id' => $shopId,
         ]);
 
-        return redirect('/');
+        $redirectPath = $redirectPath === 'home' ? '' : $redirectPath;
+
+        return redirect($redirectPath);
+    }
+
+    public function mypage()
+    {
+        $shops = Shop::all();
+        $reservedShopsPresent = Reservation::getReservedShopsPresent(Auth::id());
+        $reservedShopsPast = Reservation::getReservedShopsPast(Auth::id());
+        $favoriteShopIds = Favorite::getFavoriteShopIds(Auth::id());
+
+        return view('layouts/mypage', [
+            'shops' => $shops,
+            'reservedShopsPresent' => $reservedShopsPresent,
+            'reservedShopsPast' => $reservedShopsPast,
+            'favoriteShopIds' => $favoriteShopIds,
+        ]);
     }
 }

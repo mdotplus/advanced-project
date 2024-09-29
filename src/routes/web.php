@@ -20,9 +20,10 @@ Route::get('/', [IndexController::class, 'index']);
 
 Route::group(['middleware' => ['verified', 'auth']], function () {
     Route::get('/thanks', [IndexController::class, 'thanks']);
-    Route::get('/detail/{shopId}', [IndexController::class, 'detail']);
+    Route::get('/detail/{shopId}/{redirectPath}', [IndexController::class, 'detail']);
     Route::post('/done', [IndexController::class, 'reservation']);
-    Route::post('/favorite/{userId}/{shopId}', [IndexController::class, 'favorite']);
+    Route::post('/favorite/{userId}/{shopId}/{redirectPath}', [IndexController::class, 'favorite']);
+    Route::get('/mypage', [IndexController::class, 'mypage']);
 });
 
 Route::get('/email/verify', function () {

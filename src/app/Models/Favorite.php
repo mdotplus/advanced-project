@@ -21,31 +21,22 @@ class Favorite extends Model
         return $this->belongsTo('App\Models\Shop');
     }
 
-    public function isFavorite($userId, $shopId)
-    {
-        $clickedCount = Favorite::where('user_id', $userId)
-            ->where('shop_id', $shopId)
-            ->count();
-
-        return !($clickedCount % 2 === 0);
-    }
-
-    public function getFavoriteShops($userId)
+    public function getFavoriteShopIds($userId)
     {
         $clickedShops = Favorite::where('user_id', $userId)
             ->get()
             ->groupBy('shop_id')
             ->toArray();
 
-        $favoriteShops = [];
+        $favoriteShopIds = [];
         foreach ($clickedShops as $shopId => $timestamps) {
             $clickedCount = collect($timestamps)->count();
 
             if ($clickedCount % 2 === 1) {
-                array_push($favoriteShops, $shopId);
+                array_push($favoriteShopIds, $shopId);
             }
         }
 
-        return $favoriteShops;
+        return $favoriteShopIds;
     }
 }
