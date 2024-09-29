@@ -20,7 +20,7 @@
                                 @csrf
                                 <button class="favorites-card__detail-button" type="submit">詳しくみる</button>
                             </form>
-                            <form class="favorites-card__favorite" action="/favorite/{{ Auth::id() }}/{{ $shop->id }}" method="post">
+                            <form class="favorites-card__favorite" action="/favorite/{{ Auth::id() }}/{{ $shop->id }}/mypage" method="post">
                                 @csrf
                                 <button class="favorites-card__favorite-button" type="submit">
                                     <image class="favorites-card__favorite--heart-image" src="{{ asset('img/heart-red.svg') }}" alt="赤色のハート">

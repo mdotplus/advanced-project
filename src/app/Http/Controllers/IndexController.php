@@ -50,14 +50,16 @@ class IndexController extends Controller
         return view('done');
     }
 
-    public function favorite($userId, $shopId)
+    public function favorite($userId, $shopId, $redirectPath)
     {
         Favorite::create([
             'user_id' => $userId,
             'shop_id' => $shopId,
         ]);
 
-        return redirect('/');
+        $redirectPath = $redirectPath === 'home' ? '' : $redirectPath;
+
+        return redirect($redirectPath);
     }
 
     public function mypage()

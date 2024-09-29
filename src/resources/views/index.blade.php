@@ -46,7 +46,7 @@
                             @csrf
                             <button class="card__detail-button" type="submit">詳しくみる</button>
                         </form>
-                        <form class="card__favorite" action="/favorite/{{ Auth::id() }}/{{ $shop->id }}" method="post">
+                        <form class="card__favorite" action="/favorite/{{ Auth::id() }}/{{ $shop->id }}/home" method="post">
                             @csrf
                             <button class="card__favorite-button" type="submit">
                                 @if (in_array($shop->id, $favoriteShopIds))
