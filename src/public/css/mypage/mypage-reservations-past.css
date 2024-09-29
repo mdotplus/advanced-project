@@ -12,18 +12,23 @@
 }
 
 .reservations-past-card {
+    display: flex;
+    position: relative;
     background: #fff;
-    width: 135px;
+    width: 90%;
     height: 165px;
     border-radius: 10px;
     box-shadow: 3px 3px 10px -2px;
-    margin: 5px;
+}
+
+.reservations-past-card__shop {
+    width: 30%;
 }
 
 .reservations-past-card__image {
     width: 100%;
     height: 75px;
-    border-radius: 5px 5px 0 0;
+    border-radius: 5px 0 0 0;
 }
 
 .reservations-past-card__contents {
@@ -73,4 +78,42 @@
     position: absolute;
     top: -8px;
     left: 0px;
+}
+
+.reservations-past-card__summary {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    color: #fff;
+    background: #3560f6;
+    width: 70%;
+    height: 165px;
+    border-radius: 0 8px 8px 0;
+    padding: 15px 20px 15px;
+}
+
+.reservations-past-card__summary div span {
+    display: block;
+    margin: 20px;
+}
+
+.reservations-past-card__summary--contents {
+    margin-left: 30px;
+}
+
+.reservations-past-card__review {
+    display: flex;
+    justify-content: flex-end;
+    width: 90%;
+    margin-bottom: 70px;
+}
+
+.reservations-past-card__review--button {
+    color: #3560f6;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
 }

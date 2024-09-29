@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -23,11 +24,25 @@ class Reservation extends Model
 
     public function getReservedShops($userId)
     {
-        $reservedShops = Reservation::where('user_id', $userId)
+        return Reservation::where('user_id', $userId)
             ->orderBy('date', 'desc')
             ->orderBy('time', 'asc')
             ->get();
+    }
 
-        return $reservedShops;
+    public function getReservedShopsPast($userId)
+    {
+        $reservedShops = Reservation::getReservedShops($userId);
+        $reservedShopsPast = $reservedShops->where('date', '<', Carbon::now()->format('Y-m-d'));
+
+        return $reservedShopsPast;
+    }
+
+    public function getReservedShopsPresent($userId)
+    {
+        $reservedShops = Reservation::getReservedShops($userId);
+        $reservedShopsPresent = $reservedShops->where('date', '>=', Carbon::now()->format('Y-m-d'));
+
+        return $reservedShopsPresent;
     }
 }
