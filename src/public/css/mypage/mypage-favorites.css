@@ -1,0 +1,109 @@
+.favorites__title {
+    font-size: 20px;
+    font-weight: bold;
+    padding-left: 30px;
+    margin: 20px 0;
+}
+
+.favorites-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.favorites-card {
+    background: #fff;
+    width: 270px;
+    height: 330px;
+    border-radius: 10px;
+    box-shadow: 3px 3px 10px -2px;
+    margin: 5px;
+}
+
+.favorites-card__image {
+    width: 100%;
+    height: 150px;
+    border-radius: 10px 10px 0 0;
+}
+
+.favorites-card__contents {
+    padding: 15px;
+}
+
+.favorites-card__name {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.favorites-card__hashtag {
+    font-size: 14px;
+}
+
+.favorites-card__five-point-scale-frame {
+    padding-bottom: 15px;
+}
+
+.favorites-card__five-point-scale {
+    --one-scale-width: 35px;
+    position: relative;
+    z-index: 0;
+    display: inline-block;
+    white-space: nowrap;
+    color: #CCC;
+    font-size: var(--one-scale-width);
+    width: calc(5 * var(--one-scale-width));
+    height: calc(1 * var(--one-scale-width));
+}
+.favorites-card__five-point-scale:before,
+.favorites-card__five-point-scale:after {
+    content: '★★★★★';
+}
+.favorites-card__five-point-scale:after {
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    color: #ffcf32;
+    width: calc(var(--score) * var(--one-scale-width));
+}
+
+.favorites-card__click-contents {
+    display: flex;
+    justify-content: space-between;
+}
+
+.favorites-card__detail {
+    width: 45%;
+    height: 35px;
+}
+
+.favorites-card__detail-button {
+    background: #3560f6;
+    color: #fff;
+    width: 100%;
+    height: 100%;
+    border: 1px solid #3560f6;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.favorites-card__favorite {
+    width: 35px;
+    height: 35px;
+}
+
+.favorites-card__favorite-button {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border: none;
+    cursor: pointer;
+}
+
+.favorites-card__favorite--heart-image {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}

@@ -49,7 +49,7 @@
                         <form class="card__favorite" action="/favorite/{{ Auth::id() }}/{{ $shop->id }}" method="post">
                             @csrf
                             <button class="card__favorite-button" type="submit">
-                                @if (in_array($shop->id, $favoriteShops))
+                                @if (in_array($shop->id, $favoriteShopIds))
                                     <image class="card__favorite--heart-image" src="{{ asset('img/heart-red.svg') }}" alt="赤色のハート">
                                 @else
                                     <image class="card__favorite--heart-image" src="{{ asset('img/heart-gray.svg') }}" alt="灰色のハート">

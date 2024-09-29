@@ -21,11 +21,11 @@ class IndexController extends Controller
         ];
 
         $shops = Shop::all();
-        $favoriteShops = Favorite::getFavoriteShops(Auth::id());
+        $favoriteShopIds = Favorite::getFavoriteShopIds(Auth::id());
 
         return view('index', [
             'shops' => $shops,
-            'favoriteShops' => $favoriteShops,
+            'favoriteShopIds' => $favoriteShopIds,
             'selectOptions' => $selectOptions,
         ]);
     }
@@ -55,5 +55,18 @@ class IndexController extends Controller
         ]);
 
         return redirect('/');
+    }
+
+    public function mypage()
+    {
+        $shops = Shop::all();
+        $reservedShops = Reservation::getReservedShops(Auth::id());
+        $favoriteShopIds = Favorite::getFavoriteShopIds(Auth::id());
+
+        return view('layouts/mypage', [
+            'shops' => $shops,
+            'reservedShops' => $reservedShops,
+            'favoriteShopIds' => $favoriteShopIds,
+        ]);
     }
 }
