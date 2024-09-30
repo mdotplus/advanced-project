@@ -6,12 +6,16 @@ const summaryTime = document.querySelector('.reservation__summary--contents-time
 const summaryNumber = document.querySelector('.reservation__summary--contents-number');
 
 const now = new Date();
-const tomorrow = [
-    now.getFullYear(),
-    ('00' + (now.getMonth() + 1)).slice(-2),
-    ('00' + (now.getDate() + 1)).slice(-2)
+const tomorrowTimestamp = now.setDate(now.getDate() + 1);
+const tomorrow = new Date(tomorrowTimestamp);
+const tomorrowFormatted = [
+    tomorrow.getFullYear(),
+    ('00' + (tomorrow.getMonth() + 1)).slice(-2),
+    ('00' + (tomorrow.getDate())).slice(-2)
 ].join('-');
-selectDate.setAttribute('min', tomorrow);
+
+console.log(tomorrowFormatted);
+selectDate.setAttribute('min', tomorrowFormatted);
 
 selectDate.addEventListener('input', () => {
     summaryDate.textContent = selectDate.value;

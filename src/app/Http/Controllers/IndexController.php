@@ -50,6 +50,29 @@ class IndexController extends Controller
         return view('done');
     }
 
+    public function reservationDelete(Request $request)
+    {
+        Reservation::find($request->reservation_id)->delete();
+        return redirect('mypage');
+    }
+
+    public function reservationModify($reservationId, $redirectPath)
+    {
+        return view('reservation_modify', [
+            'reservation' => Reservation::find($reservationId),
+            'redirectPath' => $redirectPath === 'home' ? '' : $redirectPath,
+        ]);
+    }
+
+    public function reservationUpdate(Request $request)
+    {
+        $form = $request->all();
+        unset($form['_token']);
+        Reservation::find($request->reservation_id)->update($form);
+
+        return redirect('mypage');
+    }
+
     public function favorite($userId, $shopId, $redirectPath)
     {
         Favorite::create([

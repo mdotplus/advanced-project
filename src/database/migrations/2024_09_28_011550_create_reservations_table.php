@@ -22,6 +22,7 @@ class CreateReservationsTable extends Migration
             $table->integer('number');
             $table->timestamp('paid_online_at')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

@@ -5,10 +5,12 @@ namespace App\Models;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Reservation extends Model
 {
     use HasFactory;
+    use SoftDeletes;
 
     protected $fillable = ['user_id', 'shop_id', 'date', 'time', 'number', 'paid_online_at'];
 
@@ -24,16 +26,17 @@ class Reservation extends Model
 
     public function getReservedShops($userId)
     {
-        return Reservation::where('user_id', $userId)
-            ->orderBy('date', 'desc')
-            ->orderBy('time', 'asc')
-            ->get();
+        return Reservation::where('user_id', $userId);
     }
 
     public function getReservedShopsPast($userId)
     {
         $reservedShops = Reservation::getReservedShops($userId);
-        $reservedShopsPast = $reservedShops->where('date', '<', Carbon::now()->format('Y-m-d'));
+        $reservedShopsPast = $reservedShops
+            ->where('date', '<', Carbon::now()->format('Y-m-d'))
+            ->orderBy('date', 'desc')
+            ->orderBy('time', 'asc')
+            ->get();
 
         return $reservedShopsPast;
     }
@@ -41,7 +44,11 @@ class Reservation extends Model
     public function getReservedShopsPresent($userId)
     {
         $reservedShops = Reservation::getReservedShops($userId);
-        $reservedShopsPresent = $reservedShops->where('date', '>=', Carbon::now()->format('Y-m-d'));
+        $reservedShopsPresent = $reservedShops
+            ->where('date', '>=', Carbon::now()->format('Y-m-d'))
+            ->orderBy('date', 'asc')
+            ->orderBy('time', 'asc')
+            ->get();
 
         return $reservedShopsPresent;
     }
