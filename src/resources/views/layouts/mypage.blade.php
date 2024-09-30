@@ -17,5 +17,4 @@
             @include ('mypage.favorites')
         </div>
     </div>
-    <script src="{{ asset('/js/mypage.js') }}"></script>
 @endsection
