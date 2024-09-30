@@ -26,16 +26,17 @@ class Reservation extends Model
 
     public function getReservedShops($userId)
     {
-        return Reservation::where('user_id', $userId)
-            ->orderBy('date', 'desc')
-            ->orderBy('time', 'asc')
-            ->get();
+        return Reservation::where('user_id', $userId);
     }
 
     public function getReservedShopsPast($userId)
     {
         $reservedShops = Reservation::getReservedShops($userId);
-        $reservedShopsPast = $reservedShops->where('date', '<', Carbon::now()->format('Y-m-d'));
+        $reservedShopsPast = $reservedShops
+            ->where('date', '<', Carbon::now()->format('Y-m-d'))
+            ->orderBy('date', 'desc')
+            ->orderBy('time', 'asc')
+            ->get();
 
         return $reservedShopsPast;
     }
@@ -43,7 +44,11 @@ class Reservation extends Model
     public function getReservedShopsPresent($userId)
     {
         $reservedShops = Reservation::getReservedShops($userId);
-        $reservedShopsPresent = $reservedShops->where('date', '>=', Carbon::now()->format('Y-m-d'));
+        $reservedShopsPresent = $reservedShops
+            ->where('date', '>=', Carbon::now()->format('Y-m-d'))
+            ->orderBy('date', 'asc')
+            ->orderBy('time', 'asc')
+            ->get();
 
         return $reservedShopsPresent;
     }
