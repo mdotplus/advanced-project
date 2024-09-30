@@ -11,6 +11,7 @@
         </div>
         <form class="card__contents" action="/register" method="post">
             @csrf
+            <input type="hidden" name="authority_id" value=3>
             <div>
                 <img src="{{ asset('img/person.png') }}" alt="人のアイコン">
                 <input class="card__contents__input-box" type="text" name="name" value="{{ old('name') }}" placeholder="Username">
