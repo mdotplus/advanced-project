@@ -52,8 +52,20 @@ class IndexController extends Controller
 
     public function reservationDelete(Request $request)
     {
-        Reservation::find($request->shop_id)->delete();
+        Reservation::find($request->reservation_id)->delete();
         return redirect('mypage');
+    }
+
+    public function reservationModify($reservationId, $redirectPath)
+    {
+        return view('reservation_modify', [
+            'reservation' => Reservation::find($reservationId),
+            'redirectPath' => $redirectPath === 'home' ? '' : $redirectPath,
+        ]);
+    }
+
+    public function reservationUpdate(Request $request)
+    {
     }
 
     public function favorite($userId, $shopId, $redirectPath)
