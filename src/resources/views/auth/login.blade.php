@@ -1,7 +1,7 @@
 @extends ('layouts.app')
 
 @section ('css')
-    <link rel="stylesheet" href="{{ asset('css/fortify-common.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/fortify_common.css') }}">
 @endsection
 
 @section ('content')
