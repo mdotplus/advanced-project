@@ -24,7 +24,7 @@
             @csrf
             <div class="reservation__title">予約</div>
             <div class="reservation__input-contents">
-                <input name="user_id" value="{{ Auth::id() }}" hidden>
+                <input name="reservation_id" value="{{ $reservation->id }}" hidden>
                 <input name="shop_id" value="{{ $reservation->shop->id }}" hidden>
                 <input class="reservation__date" type="date" name="date" value="{{ $reservation->date }}" min="">
                 @error ('date')

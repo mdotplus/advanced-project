@@ -66,6 +66,11 @@ class IndexController extends Controller
 
     public function reservationUpdate(Request $request)
     {
+        $form = $request->all();
+        unset($form['_token']);
+        Reservation::find($request->reservation_id)->update($form);
+
+        return redirect('mypage');
     }
 
     public function favorite($userId, $shopId, $redirectPath)
