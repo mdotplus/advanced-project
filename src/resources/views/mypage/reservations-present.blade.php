@@ -24,9 +24,10 @@
             </div>
             <form class="reservation__summary--button-change" action="" method="post">
                 @csrf
+                <input type="hidden" name="shop_id" value="{{ $shop->id }}">
                 <button class="reservation__summary--button" type="submit">変更する</button>
             </form>
-            <form class="reservation__summary--button-cancel" action="/reservation/cancel" method="post">
+            <form class="reservation__summary--button-cancel" action="/reservation/delete" method="post">
                 @csrf
                 <input type="hidden" name="shop_id" value="{{ $shop->id }}">
                 <button class="reservation__summary--button" type="submit">キャンセルする</button>
