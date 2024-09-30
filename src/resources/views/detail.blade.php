@@ -20,7 +20,7 @@
             </div>
             <p class="shop__profile">{{ $shop->profile }}</p>
         </div>
-        <form class="reservation" action="/done" method="post">
+        <form class="reservation" action="/reservation" method="post">
             @csrf
             <div class="reservation__title">予約</div>
             <div class="reservation__input-contents">

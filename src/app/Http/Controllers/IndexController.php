@@ -50,6 +50,12 @@ class IndexController extends Controller
         return view('done');
     }
 
+    public function reservationCancel(Request $request)
+    {
+        Reservation::find($request->shop_id)->delete();
+        return redirect('mypage');
+    }
+
     public function favorite($userId, $shopId, $redirectPath)
     {
         Favorite::create([
