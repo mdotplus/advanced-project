@@ -42,13 +42,16 @@
             <form class="reservations-past-card__review" action="/review" method="post">
                 @csrf
                 <input type="hidden" name="reservation_id" value="{{ $shop->id }}">
-                <button class="reservations-past-card__review--button" type="submit">
-                    @if (in_array($shop->id, $reviewedReservationIds))
+                @if (in_array($shop->id, $reviewedReservationIds))
+                    <input type="hidden" name="review_id" value="{{ $reviewIds[array_search($shop->id, $reviewedReservationIds)] }}">
+                    <button class="reservations-past-card__review--button" type="submit">
                         レビューを編集する
-                    @else
+                    </button>
+                @else
+                    <button class="reservations-past-card__review--button" type="submit">
                         レビューする
-                    @endif
-                </button>
+                    </button>
+                @endif
             </form>
         @endforeach
     </div>

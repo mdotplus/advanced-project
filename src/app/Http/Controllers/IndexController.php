@@ -91,6 +91,7 @@ class IndexController extends Controller
         $shops = Shop::all();
         $reservedShopsPresent = Reservation::getReservedShopsPresent(Auth::id());
         $reservedShopsPast = Reservation::getReservedShopsPast(Auth::id());
+        $reviewIds = Review::getReviewIds(Auth::id());
         $reviewedReservationIds = Review::getReviewedReservationIds(Auth::id());
         $favoriteShopIds = Favorite::getFavoriteShopIds(Auth::id());
 
@@ -98,6 +99,7 @@ class IndexController extends Controller
             'shops' => $shops,
             'reservedShopsPresent' => $reservedShopsPresent,
             'reservedShopsPast' => $reservedShopsPast,
+            'reviewIds' => $reviewIds,
             'reviewedReservationIds' => $reviewedReservationIds,
             'favoriteShopIds' => $favoriteShopIds,
         ]);
@@ -106,15 +108,22 @@ class IndexController extends Controller
     public function review(Request $request)
     {
         $reservedShop = Reservation::find($request->reservation_id);
+        $review = Review::find($request->review_id);
 
         return view('review', [
             'reservedShop' => $reservedShop,
+            'review' => $review,
         ]);
     }
 
     public function reviewUpdate(Request $request)
     {
-        Review::create($request->all());
+        if($request->review_id) {
+            Review::find($request->review_id)->update($request->all());
+        } else {
+            Review::create($request->all());
+        }
+
         return redirect('mypage');
     }
 }

@@ -39,15 +39,29 @@
             </div>
             <div class="review__title">レビュー</div>
             <div class="review">
-                <select class="review__point" name="five_point_scale">
-                    <option value="" selected disabled>評価</option>
-                    <option value=1>★</option>
-                    <option value=2>★★</option>
-                    <option value=3>★★★</option>
-                    <option value=4>★★★★</option>
-                    <option value=5>★★★★★</option>
-                </select>
-                <textarea name="comment" rows="10" cols="30" placeholder="コメント"></textarea>
+                @if (isset($review))
+                    <input type="hidden" name="review_id" value="{{ $review->id }}">
+                    <select class="review__point" name="five_point_scale">
+                        <option value="" selected disabled>評価</option>
+                        <option value=1 {{ $review->five_point_scale === 1 ? 'selected' : '' }}>★</option>
+                        <option value=2 {{ $review->five_point_scale === 2 ? 'selected' : '' }}>★★</option>
+                        <option value=3 {{ $review->five_point_scale === 3 ? 'selected' : '' }}>★★★</option>
+                        <option value=4 {{ $review->five_point_scale === 4 ? 'selected' : '' }}>★★★★</option>
+                        <option value=5 {{ $review->five_point_scale === 5 ? 'selected' : '' }}>★★★★★</option>
+                    </select>
+                    <textarea name="comment" rows="10" cols="30">{{ $review->comment }}</textarea>
+                @else
+                    <input type="hidden" name="review_id" value="">
+                    <select class="review__point" name="five_point_scale">
+                        <option value="" selected disabled>評価</option>
+                        <option value=1>★</option>
+                        <option value=2>★★</option>
+                        <option value=3>★★★</option>
+                        <option value=4>★★★★</option>
+                        <option value=5>★★★★★</option>
+                    </select>
+                    <textarea name="comment" rows="10" cols="30" placeholder="コメント"></textarea>
+                @endif
             </div>
             <input type="hidden" name="reservation_id" value="{{ $reservedShop->id }}">
             <button class="reservation__button" type="submit">保存する</button>

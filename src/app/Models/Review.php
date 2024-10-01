@@ -17,6 +17,25 @@ class Review extends Model
         return $this->belongsTo('App\Models\Reservation');
     }
 
+    public function getReviewIds($userId)
+    {
+        $reservationIds = Reservation::getReservedShops($userId)
+            ->select('id')
+            ->get()
+            ->toArray();
+
+        $reviewIds = [];
+        foreach ($reservationIds as $id) {
+            $review = Review::where('reservation_id', $id)->first();
+
+            if (isset($review)) {
+                array_push($reviewIds, $review->id);
+            }
+        }
+
+        return $reviewIds;
+    }
+
     public function getReviewedReservationIds($userId)
     {
         $reservationIds = Reservation::getReservedShops($userId)
