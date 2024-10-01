@@ -8,6 +8,7 @@ use App\Models\Category;
 use App\Models\Shop;
 use App\Models\Favorite;
 use App\Models\Reservation;
+use App\Models\Review;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -98,5 +99,20 @@ class IndexController extends Controller
             'reservedShopsPast' => $reservedShopsPast,
             'favoriteShopIds' => $favoriteShopIds,
         ]);
+    }
+
+    public function review(Request $request)
+    {
+        $reservedShop = Reservation::find($request->reservation_id);
+
+        return view('review', [
+            'reservedShop' => $reservedShop,
+        ]);
+    }
+
+    public function reviewUpdate(Request $request)
+    {
+        Review::create($request->all());
+        return redirect('mypage');
     }
 }

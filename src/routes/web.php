@@ -27,6 +27,8 @@ Route::group(['middleware' => ['verified', 'auth']], function () {
     Route::post('/reservation/update', [IndexController::class, 'reservationUpdate']);
     Route::post('/favorite/{userId}/{shopId}/{redirectPath}', [IndexController::class, 'favorite']);
     Route::get('/mypage', [IndexController::class, 'mypage']);
+    Route::post('/review', [IndexController::class, 'review']);
+    Route::post('/review/update', [IndexController::class, 'reviewUpdate']);
 });
 
 Route::get('/email/verify', function () {

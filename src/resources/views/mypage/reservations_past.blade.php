@@ -39,7 +39,8 @@
                     </div>
                 </div>
             </div>
-            <form class="reservations-past-card__review" action="" method="post">
+            <form class="reservations-past-card__review" action="/review" method="post">
+                @csrf
                 <input type="hidden" name="reservation_id" value="{{ $shop->id }}">
                 <button class="reservations-past-card__review--button" type="submit">レビューする</button>
             </form>
