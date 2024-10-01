@@ -50,7 +50,7 @@
                 <textarea name="comment" rows="10" cols="30" placeholder="コメント"></textarea>
             </div>
             <input type="hidden" name="reservation_id" value="{{ $reservedShop->id }}">
-            <button class="reservation__button" type="submit">変更を保存する</button>
+            <button class="reservation__button" type="submit">保存する</button>
         </form>
     </div>
 @endsection
