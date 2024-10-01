@@ -91,12 +91,14 @@ class IndexController extends Controller
         $shops = Shop::all();
         $reservedShopsPresent = Reservation::getReservedShopsPresent(Auth::id());
         $reservedShopsPast = Reservation::getReservedShopsPast(Auth::id());
+        $reviewedReservationIds = Review::getReviewedReservationIds(Auth::id());
         $favoriteShopIds = Favorite::getFavoriteShopIds(Auth::id());
 
         return view('layouts/mypage', [
             'shops' => $shops,
             'reservedShopsPresent' => $reservedShopsPresent,
             'reservedShopsPast' => $reservedShopsPast,
+            'reviewedReservationIds' => $reviewedReservationIds,
             'favoriteShopIds' => $favoriteShopIds,
         ]);
     }
