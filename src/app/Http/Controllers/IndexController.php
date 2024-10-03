@@ -22,10 +22,12 @@ class IndexController extends Controller
         ];
 
         $shops = Shop::all();
+        $reviewPoints = Review::getReviewPoints();
         $favoriteShopIds = Favorite::getFavoriteShopIds(Auth::id());
 
         return view('index', [
             'shops' => $shops,
+            'reviewPoints' => $reviewPoints,
             'favoriteShopIds' => $favoriteShopIds,
             'selectOptions' => $selectOptions,
         ]);

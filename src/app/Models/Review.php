@@ -54,4 +54,26 @@ class Review extends Model
 
         return $reviewedReservationIds;
     }
+
+    public function getReviewPoints()
+    {
+        $reviewsGroupByShop = Review::with(['reservation'])
+            ->get()
+            ->groupBy(function ($item, $key) {
+                return $item->reservation->shop_id;
+            })->toArray();
+
+        $reviewPoints = [];
+        foreach ($reviewsGroupByShop as $shopId => $reviewContents) {
+            $points = [];
+            foreach ($reviewContents as $index => $value) {
+                array_push($points, $value['five_point_scale']);
+            }
+
+            $average = array_sum($points) / count($points);
+            $reviewPoints[$shopId] = $average;
+        }
+
+        return $reviewPoints;
+    }
 }
