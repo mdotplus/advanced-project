@@ -39,7 +39,11 @@
                         #<span class="card__hashtag--category">{{ $shop->category['category'] }}</span>
                     </div>
                     <div class="card__five-point-scale-frame">
-                        <span class="card__five-point-scale" style="--score: 2.3"></span>
+                        <span
+                            class="card__five-point-scale"
+                            style="--point: {{ empty($reviewPoints[$shop->id]) ? 0 : $reviewPoints[$shop->id] }}"
+                        >
+                        </span>
                     </div>
                     <div class="card__click-contents">
                         <form class="card__detail" action="/detail/{{ $shop->id }}/home" method="get">

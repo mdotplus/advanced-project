@@ -103,7 +103,7 @@
     overflow: hidden;
     white-space: nowrap;
     color: #ffcf32;
-    width: calc(var(--score) * var(--one-scale-width));
+    width: calc(var(--point) * var(--one-scale-width));
 }
 
 .card__click-contents {

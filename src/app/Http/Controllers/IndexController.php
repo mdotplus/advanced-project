@@ -8,6 +8,7 @@ use App\Models\Category;
 use App\Models\Shop;
 use App\Models\Favorite;
 use App\Models\Reservation;
+use App\Models\Review;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -21,10 +22,12 @@ class IndexController extends Controller
         ];
 
         $shops = Shop::all();
+        $reviewPoints = Review::getReviewPoints();
         $favoriteShopIds = Favorite::getFavoriteShopIds(Auth::id());
 
         return view('index', [
             'shops' => $shops,
+            'reviewPoints' => $reviewPoints,
             'favoriteShopIds' => $favoriteShopIds,
             'selectOptions' => $selectOptions,
         ]);
@@ -38,8 +41,13 @@ class IndexController extends Controller
     public function detail($shopId, $redirectPath)
     {
         $shop = Shop::find($shopId);
+        $reviews = Review::getReviews($shopId);
+        $reviewPoints = Review::getReviewPoints();
+
         return view('detail', [
             'shop' => $shop,
+            'reviews' => $reviews,
+            'reviewPoints' => $reviewPoints,
             'redirectPath' => $redirectPath === 'home' ? '' : $redirectPath,
         ]);
     }
@@ -90,13 +98,39 @@ class IndexController extends Controller
         $shops = Shop::all();
         $reservedShopsPresent = Reservation::getReservedShopsPresent(Auth::id());
         $reservedShopsPast = Reservation::getReservedShopsPast(Auth::id());
+        $reviewIds = Review::getReviewIds(Auth::id());
+        $reviewedReservationIds = Review::getReviewedReservationIds(Auth::id());
         $favoriteShopIds = Favorite::getFavoriteShopIds(Auth::id());
 
         return view('layouts/mypage', [
             'shops' => $shops,
             'reservedShopsPresent' => $reservedShopsPresent,
             'reservedShopsPast' => $reservedShopsPast,
+            'reviewIds' => $reviewIds,
+            'reviewedReservationIds' => $reviewedReservationIds,
             'favoriteShopIds' => $favoriteShopIds,
         ]);
+    }
+
+    public function review(Request $request)
+    {
+        $reservedShop = Reservation::find($request->reservation_id);
+        $review = Review::find($request->review_id);
+
+        return view('review', [
+            'reservedShop' => $reservedShop,
+            'review' => $review,
+        ]);
+    }
+
+    public function reviewUpdate(Request $request)
+    {
+        if($request->review_id) {
+            Review::find($request->review_id)->update($request->all());
+        } else {
+            Review::create($request->all());
+        }
+
+        return redirect('mypage');
     }
 }
