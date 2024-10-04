@@ -41,8 +41,13 @@ class IndexController extends Controller
     public function detail($shopId, $redirectPath)
     {
         $shop = Shop::find($shopId);
+        $reviews = Review::getReviews($shopId);
+        $reviewPoints = Review::getReviewPoints();
+
         return view('detail', [
             'shop' => $shop,
+            'reviews' => $reviews,
+            'reviewPoints' => $reviewPoints,
             'redirectPath' => $redirectPath === 'home' ? '' : $redirectPath,
         ]);
     }
