@@ -34,7 +34,7 @@
         </div>
     </header>
 
-    <main>
+    <main class="main">
         <div class="modal__background">
             <div class="modal__contents">
                 <button class="modal__contents--button-close">
