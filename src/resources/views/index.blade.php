@@ -5,10 +5,6 @@
 @endsection
 
 @section ('searchInHeader')
-    <div class="search-result__list">
-    </div>
-    <div class="search-result__hit-num">
-    </div>
     <div class="search-box">
         <select class="search-box__area">
             <option value="All area" selected>All area</option>
