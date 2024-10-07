@@ -1,0 +1,112 @@
+.title-group {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0 40px;
+    margin-top: 20px;
+}
+
+.title-group__title {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.title-group__right {
+    display: flex;
+}
+
+.title-group__search-box {
+    display: flex;
+    align-items: center;
+    background: #fff;
+    width: 500px;
+    height: 40px;
+    border-radius: 4px;
+    box-shadow: 2px 2px 4px -2px;
+    padding-left: 5px;
+}
+
+.title-group__search-box--authority,
+.title-group__search-box--keyword {
+    font-weight: bold;
+    border: none;
+}
+
+.title-group__search-box--authority {
+    width: 125px;
+    height: 25px;
+    -webkit-appearance: none;
+    appearance: none;
+    background-image: url("../../img/arrow.svg");
+    background-repeat: no-repeat;
+    background-size: 25px auto;
+    background-position: right 1px center;
+    border-right: 1px solid #e2e2e2;
+    padding-left: 10px;
+}
+
+.title-group__search-box--keyword {
+    width: 275px;
+    height: 35px;
+    -webkit-appearance: none;
+    appearance: none;
+    background-image: url("../../img/loupe.svg");
+    background-repeat: no-repeat;
+    background-size: 25px auto;
+    background-position: left 10px center;
+    padding-left: 40px;
+}
+
+.user-cards {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 40px;
+}
+
+.user-card-frame {
+    margin: 10px 5px;
+}
+
+.user-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: #fff;
+    width: 300px;
+    height: 150px;
+    border-radius: 8px;
+    padding: 10px 0 10px 5px;
+}
+
+.user-card__name--image,
+.user-card__email--image,
+.user-card__authority--image {
+    margin-right: 10px;
+}
+
+.edit-menu {
+    display: flex;
+    justify-content: flex-end;
+    width: 300px;
+    padding-right: 5px;
+}
+
+.edit-menu__modify-button,
+.edit-menu__delete-button {
+    font-weight: bold;
+    border: none;
+    margin-top: 5px;
+    cursor: pointer;
+}
+.edit-menu__modify-button {
+    color: #3560f6;
+}
+.edit-menu__delete-button {
+    color: #EB3223;
+}
+
+
+.border-line {
+    border-top: 2px solid #ccc;
+    margin: 0 20px 0;
+}

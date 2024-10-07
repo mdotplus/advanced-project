@@ -29,6 +29,7 @@ Route::group(['middleware' => ['verified', 'auth']], function () {
     Route::get('/mypage', [IndexController::class, 'mypage']);
     Route::post('/review', [IndexController::class, 'review']);
     Route::post('/review/update', [IndexController::class, 'reviewUpdate']);
+    Route::get('/adminpage', [IndexController::class, 'adminpage']);
 });
 
 Route::get('/email/verify', function () {

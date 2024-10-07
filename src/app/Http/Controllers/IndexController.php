@@ -4,11 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ReservationRequest;
 use App\Models\Area;
+use App\Models\Authority;
 use App\Models\Category;
 use App\Models\Shop;
 use App\Models\Favorite;
 use App\Models\Reservation;
 use App\Models\Review;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -132,5 +134,16 @@ class IndexController extends Controller
         }
 
         return redirect('mypage');
+    }
+
+    public function adminpage()
+    {
+        $users = User::all();
+        $authorities = Authority::all();
+
+        return view('/layouts/adminpage', [
+            'users' => $users,
+            'authorities' => $authorities,
+        ]);
     }
 }
