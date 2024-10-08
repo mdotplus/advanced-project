@@ -138,7 +138,7 @@ class IndexController extends Controller
 
     public function adminpage()
     {
-        $users = User::all();
+        $users = User::paginate(8);
         $authorities = Authority::all();
 
         return view('/layouts/adminpage', [

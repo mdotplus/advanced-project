@@ -54,6 +54,7 @@
             </div>
         @endforeach
     </div>
+    {{ $users->links() }}
     <hr class="border-line">
     <script src="{{ asset('/js/user_management.js') }}"></script>
 @endsection

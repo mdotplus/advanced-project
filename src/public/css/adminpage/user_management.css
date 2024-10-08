@@ -105,6 +105,42 @@
     color: #EB3223;
 }
 
+.paginate {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 50px;
+}
+
+.paginate-links {
+    font-size: 20px;
+    text-decoration: none;
+    margin: 0 5px;
+}
+
+.paginate-links__selected {
+    color: #000;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.paginate-links__unselected {
+    color: #3560f6;
+    font-size: 20px;
+    font-weight: normal;
+}
+
+.paginate-back__link,
+.paginate-next__link {
+    text-decoration: none;
+}
+
+.paginate-back__image,
+.paginate-next__image {
+    width: 35px;
+    height: 35px;
+    border-radius: 4px;
+    box-shadow: 2px 2px 4px -2px;
+}
 
 .border-line {
     border-top: 2px solid #ccc;
