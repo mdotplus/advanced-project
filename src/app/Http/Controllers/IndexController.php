@@ -146,4 +146,11 @@ class IndexController extends Controller
             'authorities' => $authorities,
         ]);
     }
+
+    public function adminpageUpdate(Request $request)
+    {
+        User::find($request->user_id)->update($request->all());
+
+        return redirect('adminpage');
+    }
 }

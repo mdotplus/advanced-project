@@ -38,23 +38,55 @@
                     </div>
                 </div>
                 <div class="edit-menu">
-                    @unless ($user->authority->authority === '管理者')
-                        <form class="edit-menu__modify" action="" method="post">
-                            @csrf
-                            <input type="hidden" name="user_id" value="{{ $user->id }}">
-                            <button class="edit-menu__modify-button" type="submit">編集する</button>
-                        </form>
-                        <form class="edit-menu__delete" action="" method="post">
-                            @csrf
-                            <input type="hidden" name="user_id" value="{{ $user->id }}">
-                            <button class="edit-menu__delete-button" type="submit">削除する</button>
-                        </form>
+                    @unless ($user->id === 1 && $user->authority->authority === '管理者')
+                        <button
+                            class="edit-menu__modify-button"
+                            value="{{ $user->id }},{{ $user->name }},{{ $user->email }},{{ $user->authority->getPlainAuthority() }}"
+                            type="button"
+                        >
+                            編集する
+                        </button>
+                        <button
+                            class="edit-menu__delete-button"
+                            type="button"
+                        >
+                            削除する
+                        </button>
                     @endunless
                 </div>
             </div>
         @endforeach
     </div>
     {{ $users->links() }}
+    <div class="user-modal__background">
+        <div class="user-modal__contents-frame">
+            <button class="user-modal__contents--button-close">
+                <img class="user-modal__contents--image-close" src="{{ asset('img/menu-close.png') }}" alt="close">
+            </button>
+            <form class="user-modal__contents--items" action="/adminpage/update" method="post">
+                @csrf
+                <input class="user-modal__contents--items-user-id" type="hidden" name="user_id" value="">
+                <div class="user-modal__contents--items-name-frame">
+                    <img class="user-modal__contents--items-name-image" src="img/person-blue.svg" alt="人のアイコン">
+                    <span class="user-modal__contents--items-name"></span>
+                </div>
+                <div class="user-modal__contents--items-email-frame">
+                    <img class="user-modal__contents--items-email--image" src="img/email-blue.svg" alt="メールのアイコン">
+                    <span class="user-modal__contents--items-email"></span>
+                </div>
+                <div class="user-modal__contents--items-authority-frame">
+                    <img class="user-modal__contents--items-authority--image" src="img/flag-blue.svg" alt="旗のアイコン">
+                    <select class="user-modal__contents--items-authority" name="authority_id">
+                        <option value=1>管理者</option>
+                        <option value=2>店舗代表者</option>
+                        <option value=3>利用者</option>
+                    </select>
+                </div>
+                <button class="user-modal__contents--items-button" type="submit">保存する</button>
+            </form>
+        </div>
+    </div>
     <hr class="border-line">
-    <script src="{{ asset('/js/user_management.js') }}"></script>
+    <script src="{{ asset('/js/user_management_search.js') }}"></script>
+    <script src="{{ asset('/js/user_management_modal.js') }}"></script>
 @endsection

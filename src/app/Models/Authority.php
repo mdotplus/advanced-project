@@ -25,4 +25,9 @@ class Authority extends Model
                 return $value;
         }
     }
+
+    public function getPlainAuthority()
+    {
+        return $this->attributes['authority'];
+    }
 }
