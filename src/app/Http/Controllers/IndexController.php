@@ -146,6 +146,7 @@ class IndexController extends Controller
             'categories' => Category::all(),
         ];
         $shops = Shop::all();
+        $reviews = Review::getReviews($shopId);
         $reviewPoints = Review::getReviewPoints();
 
         return view('/layouts/adminpage', [
@@ -153,6 +154,7 @@ class IndexController extends Controller
             'authorities' => $authorities,
             'selectOptions' => $selectOptions,
             'shops' => $shops,
+            'reviews' => $reviews,
             'reviewPoints' => $reviewPoints,
         ]);
     }

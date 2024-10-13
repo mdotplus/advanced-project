@@ -130,6 +130,26 @@
     width: 20%;
 }
 
+.shop-card__name--element,
+.shop-card__area--element,
+.shop-card__genre--element {
+    display: inline-block;
+    font-size: 22px;
+    font-weight: bold;
+    padding-top: 5px;
+}
+
+.shop-card__review--element {
+    display: inline-block;
+    padding-top: 5px;
+}
+
+.shop-card__profile--element {
+    display: inline-block;
+    font-weight: bold;
+    padding-top: 5px;
+}
+
 .shop-card__review {
     width: 40%;
 }

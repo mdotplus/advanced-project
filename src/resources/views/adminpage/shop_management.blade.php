@@ -59,15 +59,27 @@
                             </div>
                             <div class="shop-card__review">
                                 <span class="shop-card__review--title">総合評価</span><br>
-                                <span class="shop-card__review--element">
-                                    {{ empty($reviewPoints[$shop->id]) ? 'まだレビューがありません' : $reviewPoints[$shop->id] }}
-                                </span>
+                                <div class="shop-card__review--total-point-frame">
+                                    <div
+                                        class="shop-card__review--total-point-star"
+                                        style="--point: {{ empty($reviewPoints[$shop->id]) ? 0 : $reviewPoints[$shop->id] }}"
+                                    >
+                                    </div>
+                                    <div class="shop-card__review--total-point-number">
+                                        @if (empty($reviewPoints[$shop->id]))
+                                            <span class="shop-card__review--total-point-number-no-review">まだレビューがありません</sapn>
+                                        @else
+                                            <span class="shop-card__review--total-point-number-average">{{ $reviewPoints[$shop->id] }} 点</sapn>
+                                            <span class="shop-card__review--total-point-number-count">( 全 {{ count($reviews) }} 件 )</span>
+                                        @endif
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <div class="shop-card-right__bottom">
                             <div class="shop-card__profile">
-                                <span class="shop-card__profile-title">店舗概要</span><br>
-                                <span class="shop-card__profile-element">{{ $shop->profile }}</span>
+                                <span class="shop-card__profile--title">店舗概要</span><br>
+                                <span class="shop-card__profile--element">{{ $shop->profile }}</span>
                             </div>
                         </div>
                     </div>
