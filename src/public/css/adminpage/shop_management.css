@@ -86,17 +86,38 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    width: 20%;
+    width: 200px;
 }
 
 .shop-card__reservation {
     display: flex;
     flex-wrap: wrap;
+    color: #fff;
+    background: #3560f6;
+    width: 100%;
+    height: 120px;
+    border-radius: 8px;
 }
 
 .shop-card__reservation--all,
 .shop-card__reservation--today {
     width: 50%;
+    margin: auto 0;
+}
+.shop-card__reservation--all {
+    padding-left: 10px;
+}
+.shop-card__reservation--today {
+    padding-right: 10px;
+}
+
+.shop-card__reservation--detail-button {
+    color: #fff;
+    background: #003ff5;
+    width: 100%;
+    border: none;
+    border-radius: 0 0 8px 8px;
+    cursor: pointer;
 }
 
 .shop-card__reservation--number {

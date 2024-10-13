@@ -34,10 +34,18 @@
                     <div class="shop-card-left">
                         <div class="shop-card__reservation">
                             <div class="shop-card__reservation--all">
-                                予約<br><span class="shop-card__reservation--number">12</span> 件
+                                予約<br>
+                                <span class="shop-card__reservation--number">
+                                    {{ empty($validReservations[$shop->id]) ? 0 : count($validReservations[$shop->id]['all']) }}
+                                </span>
+                                 件
                             </div>
                             <div class="shop-card__reservation--today">
-                                うち、本日<br><span class="shop-card__reservation--number">3</span> 件
+                                うち、本日<br>
+                                <span class="shop-card__reservation--number">
+                                    {{ empty($validReservations[$shop->id]) ? 0 : count($validReservations[$shop->id]['today']) }}
+                                </span>
+                                 件
                             </div>
                             <button class="shop-card__reservation--detail-button" type="button">詳細を見る</button>
                         </div>
