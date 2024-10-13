@@ -139,19 +139,62 @@
     padding-top: 5px;
 }
 
-.shop-card__review--element {
-    display: inline-block;
+.shop-card__review {
+    width: 40%;
+}
+
+.shop-card__review--total-point-frame {
+    --one-scale-width: 30px;
+    display: flex;
+    align-items: center;
+    height: calc(1 * var(--one-scale-width));
     padding-top: 5px;
+}
+
+.shop-card__review--total-point-star {
+    position: relative;
+    z-index: 0;
+    display: inline-block;
+    white-space: nowrap;
+    color: #CCC;
+    font-size: var(--one-scale-width);
+    width: calc(5 * var(--one-scale-width));
+}
+.shop-card__review--total-point-star:before,
+.shop-card__review--total-point-star:after {
+    content: '★★★★★';
+}
+.shop-card__review--total-point-star:after {
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    color: #ffcf32;
+    width: calc(var(--point) * var(--one-scale-width));
+}
+
+.shop-card__review--total-point-number {
+    margin-left: 10px;
+}
+
+.shop-card__review--total-point-number-average,
+.shop-card__review--total-point-number-count {
+    display: inline-block;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.shop-card__review--total-point-number-no-review {
+    display: inline-block;
+    font-size: 12px;
 }
 
 .shop-card__profile--element {
     display: inline-block;
     font-weight: bold;
     padding-top: 5px;
-}
-
-.shop-card__review {
-    width: 40%;
 }
 
 .edit-menu {
