@@ -141,9 +141,19 @@ class IndexController extends Controller
         $users = User::paginate(8);
         $authorities = Authority::all();
 
+        $selectOptions = [
+            'areas' => Area::all(),
+            'categories' => Category::all(),
+        ];
+        $shops = Shop::all();
+        $reviewPoints = Review::getReviewPoints();
+
         return view('/layouts/adminpage', [
             'users' => $users,
             'authorities' => $authorities,
+            'selectOptions' => $selectOptions,
+            'shops' => $shops,
+            'reviewPoints' => $reviewPoints,
         ]);
     }
 
@@ -151,6 +161,12 @@ class IndexController extends Controller
     {
         User::find($request->user_id)->update($request->all());
 
+        return redirect('adminpage');
+    }
+
+    public function adminpageDelete(Request $request)
+    {
+        User::find($request->user_id)->delete();
         return redirect('adminpage');
     }
 }

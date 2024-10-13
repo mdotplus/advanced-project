@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="{{ asset('css/sanitize.css') }}">
     <link rel="stylesheet" href="{{ asset('css/common.css') }}">
     @yield ('css')
+    @yield ('css_second')
 </head>
 
 <body>
@@ -61,6 +62,7 @@
         </div>
         <div class="background"></div>
         @yield ('content')
+        @yield ('content_second')
         <script src="{{ asset('/js/app.js') }}"></script>
     </main>
 </body>

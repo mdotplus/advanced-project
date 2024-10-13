@@ -46,12 +46,11 @@
                         >
                             編集する
                         </button>
-                        <button
-                            class="edit-menu__delete-button"
-                            type="button"
-                        >
-                            削除する
-                        </button>
+                        <form action="/adminpage/delete" method="post">
+                            @csrf
+                            <input type="hidden" name="user_id" value="{{ $user->id }}">
+                            <button class="edit-menu__delete-button" type="submit">削除する</button>
+                        </form>
                     @endunless
                 </div>
             </div>
@@ -86,7 +85,6 @@
             </form>
         </div>
     </div>
-    <hr class="border-line">
     <script src="{{ asset('/js/user_management_search.js') }}"></script>
     <script src="{{ asset('/js/user_management_modal.js') }}"></script>
 @endsection
