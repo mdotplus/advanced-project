@@ -29,15 +29,15 @@
                     <div class="reviews__total-point--frame">
                         <div
                             class="reviews__total-point-star"
-                            style="--point: {{ empty($reviewPoints[$shop->id]) ? 0 : $reviewPoints[$shop->id] }}"
+                            style="--point: {{ empty($reviewPoints[$shop->id]['average']) ? 0 : $reviewPoints[$shop->id]['average'] }}"
                         >
                         </div>
                         <div class="reviews__total-point-number">
                             @if (empty($reviewPoints[$shop->id]))
                                 <span class="reviews__total-point-number--no-review">まだレビューがありません</sapn>
                             @else
-                                <span class="reviews__total-point-number--average">{{ $reviewPoints[$shop->id] }} 点</sapn>
-                                <span class="reviews__total-point-number--count">( 全 {{ count($reviews) }} 件 )</span>
+                                <span class="reviews__total-point-number--average">{{ $reviewPoints[$shop->id]['average'] }} 点</sapn>
+                                <span class="reviews__total-point-number--count">( 全 {{ $reviewPoints[$shop->id]['count'] }} 件 )</span>
                             @endif
                         </div>
                     </div>
