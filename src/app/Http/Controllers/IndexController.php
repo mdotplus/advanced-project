@@ -171,4 +171,26 @@ class IndexController extends Controller
         User::find($request->user_id)->delete();
         return redirect('adminpage');
     }
+
+    public function shopCreate($userId)
+    {
+        $selectOptions = [
+            'areas' => Area::all(),
+            'categories' => Category::all(),
+        ];
+
+        return view('/adminpage/shop_register', [
+            'userId' => $userId,
+            'selectOptions' => $selectOptions,
+        ]);
+    }
+
+    public function shopRegister(Request $request)
+    {
+        $form = $request->all();
+        unset($form['_token']);
+        Shop::create($form);
+
+        return redirect('adminpage');
+    }
 }

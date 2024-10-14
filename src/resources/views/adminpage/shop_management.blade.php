@@ -9,6 +9,10 @@
             <div class="title-group-second__title">店舗情報管理</div>
         </div>
         <div class="title-group-second__right">
+            <form class="title-group-second__create-new-shop" action="/shop/create/{{ Auth::id() }}" method="get">
+                @csrf
+                <button class="title-group-second__create-new-shop-button" type="submit">新規店舗情報作成</button>
+            </form>
             <div class="title-group-second__search-box">
                 <select class="title-group-second__search-box--area">
                     <option value="All area" selected>All area</option>
@@ -49,7 +53,11 @@
                             </div>
                             <button class="shop-card__reservation--detail-button" type="button">詳細を見る</button>
                         </div>
-                        <img class="shop-card__image" src="{{ $shop->image_url }}" alt="店舗写真">
+                        @if (is_null($shop->image_url))
+                            <div class="shop-card__no-image">NO IMAGE</div>
+                        @else
+                            <img class="shop-card__image" src="{{ $shop->image_url }}" alt="店舗写真">
+                        @endif
                     </div>
                     <div class="shop-card-right">
                         <div class="shop-card-right__top">

@@ -32,6 +32,8 @@ Route::group(['middleware' => ['verified', 'auth']], function () {
     Route::get('/adminpage', [IndexController::class, 'adminpage']);
     Route::post('/adminpage/update', [IndexController::class, 'adminpageUpdate']);
     Route::post('/adminpage/delete', [IndexController::class, 'adminpageDelete']);
+    Route::get('/shop/create/{userId}', [IndexController::class, 'shopCreate']);
+    Route::post('/shop/register', [IndexController::class, 'shopRegister']);
 });
 
 Route::get('/email/verify', function () {

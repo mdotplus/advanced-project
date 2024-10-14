@@ -43,6 +43,7 @@
     background-position: right 1px center;
     border-right: 1px solid #e2e2e2;
     padding-left: 10px;
+    cursor: pointer;
 }
 
 .title-group__search-box--keyword {
