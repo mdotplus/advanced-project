@@ -9,7 +9,7 @@
             <div class="title-group-second__title">店舗情報管理</div>
         </div>
         <div class="title-group-second__right">
-            <form class="title-group-second__create-new-shop" action="/shop/create/{{ Auth::id() }}" method="get">
+            <form class="title-group-second__create-new-shop" action="/adminpage/shop/create/{{ Auth::id() }}" method="get">
                 @csrf
                 <button class="title-group-second__create-new-shop-button" type="submit">新規店舗情報作成</button>
             </form>

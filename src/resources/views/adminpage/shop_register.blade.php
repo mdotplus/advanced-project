@@ -9,7 +9,7 @@
         <div class="card__title">
             Shop Registration
         </div>
-        <form class="card__contents" action="/shop/register" method="post" enctype="multipart/form-data">
+        <form class="card__contents" action="/adminpage/shop/register" method="post" enctype="multipart/form-data">
             @csrf
             <input type="hidden" name="user_id" value="{{ $userId }}">
             <div class="card__contents--input-box-frame">

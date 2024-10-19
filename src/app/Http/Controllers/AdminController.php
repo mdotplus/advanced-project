@@ -66,8 +66,11 @@ class AdminController extends Controller
     public function shopRegister(ShopRegisterRequest $request)
     {
         $form = $request->all();
-        $filePath = basename($request->file('image')->store('public/img'));
-        $form['image_url'] = 'storage/img/' . $filePath;
+
+        if ($request->file('image') !== null) {
+            $filePath = basename($request->file('image')->store('public/img'));
+            $form['image_url'] = 'storage/img/' . $filePath;
+        }
         unset($form['_token']);
 
         Shop::create($form);
