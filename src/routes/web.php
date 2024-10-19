@@ -30,9 +30,10 @@ Route::group(['middleware' => ['verified', 'auth']], function () {
     Route::get('/mypage', [IndexController::class, 'mypage']);
     Route::post('/review', [IndexController::class, 'review']);
     Route::post('/review/update', [IndexController::class, 'reviewUpdate']);
+
     Route::get('/adminpage', [AdminController::class, 'adminpage']);
-    Route::post('/adminpage/update', [AdminController::class, 'adminpageUpdate']);
-    Route::post('/adminpage/delete', [AdminController::class, 'adminpageDelete']);
+    Route::post('/adminpage/user/update', [AdminController::class, 'userUpdate']);
+    Route::post('/adminpage/user/delete', [AdminController::class, 'userDelete']);
     Route::get('/shop/create/{userId}', [AdminController::class, 'shopCreate']);
     Route::post('/shop/register', [AdminController::class, 'shopRegister']);
 });

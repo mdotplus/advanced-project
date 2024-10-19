@@ -37,14 +37,14 @@ class AdminController extends Controller
         ]);
     }
 
-    public function adminpageUpdate(Request $request)
+    public function userUpdate(Request $request)
     {
         User::find($request->user_id)->update($request->all());
 
         return redirect('adminpage');
     }
 
-    public function adminpageDelete(Request $request)
+    public function userDelete(Request $request)
     {
         User::find($request->user_id)->delete();
         return redirect('adminpage');

@@ -46,7 +46,7 @@
                         >
                             編集する
                         </button>
-                        <form action="/adminpage/delete" method="post">
+                        <form action="/adminpage/user/delete" method="post">
                             @csrf
                             <input type="hidden" name="user_id" value="{{ $user->id }}">
                             <button class="edit-menu__delete-button" type="submit">削除する</button>
@@ -62,7 +62,7 @@
             <button class="user-modal__contents--button-close">
                 <img class="user-modal__contents--image-close" src="{{ asset('img/menu-close.png') }}" alt="close">
             </button>
-            <form class="user-modal__contents--items" action="/adminpage/update" method="post">
+            <form class="user-modal__contents--items" action="/adminpage/user/update" method="post">
                 @csrf
                 <input class="user-modal__contents--items-user-id" type="hidden" name="user_id" value="">
                 <div class="user-modal__contents--items-name-frame">
