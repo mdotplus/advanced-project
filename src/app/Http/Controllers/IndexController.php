@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ReservationRequest;
+use App\Http\Requests\ShopRegisterRequest;
 use App\Models\Area;
 use App\Models\Authority;
 use App\Models\Category;
@@ -185,10 +186,13 @@ class IndexController extends Controller
         ]);
     }
 
-    public function shopRegister(Request $request)
+    public function shopRegister(ShopRegisterRequest $request)
     {
         $form = $request->all();
+        $filePath = basename($request->file('image')->store('public/img'));
+        $form['image_url'] = 'storage/img/' . $filePath;
         unset($form['_token']);
+
         Shop::create($form);
 
         return redirect('adminpage');

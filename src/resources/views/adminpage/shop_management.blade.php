@@ -56,7 +56,7 @@
                         @if (is_null($shop->image_url))
                             <div class="shop-card__no-image">NO IMAGE</div>
                         @else
-                            <img class="shop-card__image" src="{{ $shop->image_url }}" alt="店舗写真">
+                            <img class="shop-card__image" src="{{ asset($shop->image_url) }}" alt="店舗写真">
                         @endif
                     </div>
                     <div class="shop-card-right">
