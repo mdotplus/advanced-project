@@ -37,10 +37,10 @@
                         <span class="user-card__authority--element">{{ $user->authority->authority }}</span>
                     </div>
                 </div>
-                <div class="edit-menu">
+                <div class="user-edit-menu">
                     @unless ($user->id === 1 && $user->authority->authority === '管理者')
                         <button
-                            class="edit-menu__modify-button"
+                            class="user-edit-menu__modify-button"
                             value="{{ $user->id }},{{ $user->name }},{{ $user->email }},{{ $user->authority->getPlainAuthority() }}"
                             type="button"
                         >
@@ -49,7 +49,7 @@
                         <form action="/adminpage/user/delete" method="post">
                             @csrf
                             <input type="hidden" name="user_id" value="{{ $user->id }}">
-                            <button class="edit-menu__delete-button" type="submit">削除する</button>
+                            <button class="user-edit-menu__delete-button" type="submit">削除する</button>
                         </form>
                     @endunless
                 </div>

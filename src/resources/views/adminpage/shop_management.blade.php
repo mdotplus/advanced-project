@@ -17,13 +17,13 @@
                 <select class="title-group-second__search-box--area">
                     <option value="All area" selected>All area</option>
                     @foreach ($selectOptions['areas'] as $area)
-                        <option value="{{ $area->area }}">{{ $area->area }}</option>
+                        <option value="{{ $area->id }}">{{ $area->area }}</option>
                     @endforeach
                 </select>
                 <select class="title-group-second__search-box--genre">
                     <option value="All genre" selected>All genre</option>
                     @foreach ($selectOptions['categories'] as $category)
-                        <option value="{{ $category->category }}">{{ $category->category }}</option>
+                        <option value="{{ $category->id }}">{{ $category->category }}</option>
                     @endforeach
                 </select>
                 <input class="title-group-second__search-box--name" placeholder="Search ...">
@@ -100,9 +100,10 @@
                         </div>
                     </div>
                 </div>
-                <div class="edit-menu">
+                <div class="shop-edit-menu">
                     <button
-                        class="edit-menu__modify-button"
+                        class="shop-edit-menu__modify-button"
+                        value="{{ $shop->id }},{{ $shop->name }},{{ $shop->area_id }},{{ $shop->category_id }},{{ $shop->profile }}"
                         type="button"
                     >
                         編集する
@@ -110,39 +111,49 @@
                     <form action="/adminpage/delete" method="post">
                         @csrf
                         <input type="hidden" name="user_id" value="{{ $shop->id }}">
-                        <button class="edit-menu__delete-button" type="submit">削除する</button>
+                        <button class="shop-edit-menu__delete-button" type="submit">削除する</button>
                     </form>
                 </div>
             </div>
         @endforeach
     </div>
     {{ $users->links() }}
-    <div class="shop-modal__background">
-        <div class="shop-modal__contents-frame">
-            <button class="shop-modal__contents--button-close">
-                <img class="shop-modal__contents--image-close" src="{{ asset('img/menu-close.png') }}" alt="close">
-            </button>
-            <form class="shop-modal__contents--items" action="/adminpage/update" method="post">
-                @csrf
-                <input class="shop-modal__contents--items-shop-id" type="hidden" name="user_id" value="">
-                <div class="shop-modal__contents--items-name-frame">
-                    <img class="shop-modal__contents--items-name-image" src="img/person-blue.svg" alt="人のアイコン">
-                    <span class="shop-modal__contents--items-name"></span>
-                </div>
-                <div class="shop-modal__contents--items-email-frame">
-                    <img class="shop-modal__contents--items-email--image" src="img/email-blue.svg" alt="メールのアイコン">
-                    <span class="shop-modal__contents--items-email"></span>
-                </div>
-                <div class="shop-modal__contents--items-authority-frame">
-                    <img class="shop-modal__contents--items-authority--image" src="img/flag-blue.svg" alt="旗のアイコン">
-                    <select class="shop-modal__contents--items-authority" name="authority_id">
-                        <option value=1>管理者</option>
-                        <option value=2>店舗代表者</option>
-                        <option value=3>利用者</option>
-                    </select>
-                </div>
-                <button class="shop-modal__contents--items-button" type="submit">保存する</button>
-            </form>
+    <div class="shop-modal__layer">
+        <div class="shop-modal__background">
+            <div class="shop-modal__contents-frame">
+                <button class="shop-modal__contents--button-close">
+                    <img class="shop-modal__contents--image-close" src="{{ asset('img/menu-close.png') }}" alt="close">
+                </button>
+                <form class="shop-modal__contents--items" action="/adminpage/shop/update" method="post">
+                    @csrf
+                    <input class="shop-modal__contents--items-shop-id" type="hidden" name="shop_id" value="">
+                    <div class="shop-modal__contents--items-shop-name-frame">
+                        <span class="shop-modal__contents--items-shop-name-title">店舗名</span>
+                        <span class="shop-modal__contents--items-shop-name"></span>
+                    </div>
+                    <div class="shop-modal__contents--items-area-frame">
+                        <span class="shop-modal__contents--items-area-title">地域</span>
+                        <select class="shop-modal__contents--items-area" name="area_id">
+                            @foreach ($selectOptions['areas'] as $area)
+                                <option value="{{ $area->id }}">{{ $area->area }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="shop-modal__contents--items-category-frame">
+                        <span class="shop-modal__contents--items-category-title">ジャンル</span>
+                        <select class="shop-modal__contents--items-category" name="category_id">
+                            @foreach ($selectOptions['categories'] as $category)
+                                <option value="{{ $category->id }}">{{ $category->category }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="shop-modal__contents--items-profile-frame">
+                        <span class="shop-modal__contents--items-profile-title">店舗概要</span>
+                        <textarea class="shop-modal__contents--items-profile" name="profile"></textarea>
+                    </div>
+                    <button class="shop-modal__contents--items-button" type="submit">保存する</button>
+                </form>
+            </div>
         </div>
     </div>
     <script src="{{ asset('/js/shop_management_search.js') }}"></script>

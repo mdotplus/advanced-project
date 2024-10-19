@@ -8,14 +8,14 @@
     <div class="search-box">
         <select class="search-box__area">
             <option value="All area" selected>All area</option>
-            @foreach ($selectOptions['areas'] as $selectOption)
-                <option value="{{ $selectOption['area'] }}">{{ $selectOption['area'] }}</option>
+            @foreach ($selectOptions['areas'] as $area)
+                <option value="{{ $area->area }}">{{ $area->area }}</option>
             @endforeach
         </select>
         <select class="search-box__genre">
             <option value="All genre" selected>All genre</option>
-            @foreach ($selectOptions['categories'] as $selectOption)
-                <option value="{{ $selectOption['category'] }}">{{ $selectOption['category'] }}</option>
+            @foreach ($selectOptions['categories'] as $category)
+                <option value="{{ $category->category }}">{{ $category->category }}</option>
             @endforeach
         </select>
         <input class="search-box__name" placeholder="Search ...">
@@ -37,7 +37,7 @@
                     <div class="card__five-point-scale-frame">
                         <span
                             class="card__five-point-scale"
-                            style="--point: {{ empty($reviewPoints[$shop->id]['average']) ? 0 : $reviewPoints[$shop->id]['average'] }}"
+                            style="--point: {{ empty($reviewPoints[$shop->id]) ? 0 : $reviewPoints[$shop->id] }}"
                         >
                         </span>
                     </div>

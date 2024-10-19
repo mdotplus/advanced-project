@@ -1,28 +1,35 @@
-const userModal = document.querySelector('.user-modal__background');
-const userModalButtonsEdit = document.querySelectorAll('.edit-menu__modify-button');
-const userModalCloses = document.querySelectorAll('.user-modal__contents--button-close');
+const shopModal = document.querySelector('.shop-modal__layer');
+const shopModalButtonsEdit = document.querySelectorAll('.shop-edit-menu__modify-button');
+const shopModalCloses = document.querySelectorAll('.shop-modal__contents--button-close');
 
-userModalButtonsEdit.forEach(button => {
+shopModalButtonsEdit.forEach(button => {
     button.addEventListener('click', () => {
-        userModal.classList.add('is-open');
+        shopModal.classList.add('is-open');
 
         const values = button.value.split(',');
         console.log(values);
 
-        const userIdElement = document.querySelector('.user-modal__contents--items-user-id');
-        userIdElement.value = values[0];
-        const userNameElement = document.querySelector('.user-modal__contents--items-name');
-        userNameElement.textContent = values[1];
-        const userEmailElement = document.querySelector('.user-modal__contents--items-email');
-        userEmailElement.textContent = values[2];
-        const userAuthorityElement = document.querySelector('.user-modal__contents--items-authority');
-        const authority = values[3];
-        userAuthorityElement.options[authority - 1].selected = true;
+        const shopIdElement = document.querySelector('.shop-modal__contents--items-shop-id');
+        shopIdElement.value = values[0];
+
+        const shopNameElement = document.querySelector('.shop-modal__contents--items-shop-name');
+        shopNameElement.textContent = values[1];
+
+        const shopAreaElement = document.querySelector('.shop-modal__contents--items-area');
+        const areaId = values[2];
+        shopAreaElement.options[areaId - 1].selected = true;
+
+        const shopCategoryElement = document.querySelector('.shop-modal__contents--items-category');
+        const categoryId = values[3];
+        shopCategoryElement.options[categoryId - 1].selected = true;
+
+        const shopProfileElement = document.querySelector('.shop-modal__contents--items-profile');
+        shopProfileElement.textContent = values[4];
     })
 });
 
-userModalCloses.forEach(close => {
+shopModalCloses.forEach(close => {
     close.addEventListener('click', () => {
-        userModal.classList.remove('is-open');
+        shopModal.classList.remove('is-open');
     })
 });

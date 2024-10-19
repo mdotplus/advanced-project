@@ -85,24 +85,24 @@
     margin-right: 10px;
 }
 
-.edit-menu {
+.user-edit-menu {
     display: flex;
     justify-content: flex-end;
     width: 300px;
     padding-right: 5px;
 }
 
-.edit-menu__modify-button,
-.edit-menu__delete-button {
+.user-edit-menu__modify-button,
+.user-edit-menu__delete-button {
     font-weight: bold;
     border: none;
     margin-top: 5px;
     cursor: pointer;
 }
-.edit-menu__modify-button {
+.user-edit-menu__modify-button {
     color: #3560f6;
 }
-.edit-menu__delete-button {
+.user-edit-menu__delete-button {
     color: #EB3223;
 }
 

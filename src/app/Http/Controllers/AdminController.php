@@ -77,4 +77,10 @@ class AdminController extends Controller
 
         return redirect('adminpage');
     }
+
+    public function shopUpdate(Request $request)
+    {
+        Shop::find($request->shop_id)->update($request->all());
+        return redirect('adminpage');
+    }
 }
