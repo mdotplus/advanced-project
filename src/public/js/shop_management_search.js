@@ -1,65 +1,65 @@
-const searchAreaSelect = document.querySelector('.title-group-second__search-box--area');
-const searchGenreSelect = document.querySelector('.title-group-second__search-box--genre');
-const searchNameInput = document.querySelector('.title-group-second__search-box--name');
+const shopSearchAreaSelect = document.querySelector('.title-group-second__search-box--area');
+const shopSearchGenreSelect = document.querySelector('.title-group-second__search-box--genre');
+const shopSearchNameInput = document.querySelector('.title-group-second__search-box--name');
 
-const cardNameElements = document.querySelectorAll('.card__name');
-const cardNames = [];
-for (let cardNameElement of cardNameElements) {
-    cardNames.push(cardNameElement.textContent);
+const shopCardNameElements = document.querySelectorAll('.shop-card__name--element');
+const shopCardNames = [];
+for (let cardNameElement of shopCardNameElements) {
+    shopCardNames.push(cardNameElement.textContent);
 }
 
-const cardIdElements = document.querySelectorAll('.card__id');
-const cardIds = [];
-for (let cardIdElement of cardIdElements) {
-    cardIds.push(cardIdElement.textContent);
+const shopCardIdElements = document.querySelectorAll('.shop-card__id');
+const shopCardIds = [];
+for (let shopCardIdElement of shopCardIdElements) {
+    shopCardIds.push(shopCardIdElement.textContent);
 }
 
-const cardAreaElements = document.querySelectorAll('.card__hashtag--area');
-const cardAreas = [];
-for (let cardAreaElement of cardAreaElements) {
-    cardAreas.push(cardAreaElement.textContent);
+const shopCardAreaElements = document.querySelectorAll('.shop-card__area--element');
+const shopCardAreas = [];
+for (let shopCardAreaElement of shopCardAreaElements) {
+    shopCardAreas.push(shopCardAreaElement.textContent);
 }
 
-const cardGenreElements = document.querySelectorAll('.card__hashtag--category');
-const cardGenres = [];
-for (let cardGenreElement of cardGenreElements) {
-    cardGenres.push(cardGenreElement.textContent);
+const shopCardGenreElements = document.querySelectorAll('.shop-card__genre--element');
+const shopCardGenres = [];
+for (let shopCardGenreElement of shopCardGenreElements) {
+    shopCardGenres.push(shopCardGenreElement.textContent);
 }
 
-function searchByName(targetText) {
+function searchByName(shopTargetText) {
     let resultIds = [];
-    for (let i = 0; i < cardNames.length; i++) {
-        if (cardNames[i].indexOf(targetText) !== -1 || targetText === '') {
-            resultIds.push(cardIds[i]);
+    for (let i = 0; i < shopCardNames.length; i++) {
+        if (shopCardNames[i].indexOf(shopTargetText) !== -1 || shopTargetText === '') {
+            resultIds.push(shopCardIds[i]);
         }
     };
 
     return resultIds;
 }
 
-function searchByArea(targetArea) {
+function searchByArea(shopTargetArea) {
     let resultIds = [];
-    for (let i = 0; i < cardAreas.length; i++) {
-        if (cardAreas[i] === targetArea || targetArea === 'All area') {
-            resultIds.push(cardIds[i]);
+    for (let i = 0; i < shopCardAreas.length; i++) {
+        if (shopCardAreas[i] === shopTargetArea || shopTargetArea === 'All area') {
+            resultIds.push(shopCardIds[i]);
         }
     };
 
     return resultIds;
 }
 
-function searchByGenre(targetGenre) {
+function searchByGenre(shopTargetGenre) {
     let resultIds = [];
-    for (let i = 0; i < cardGenres.length; i++) {
-        if (cardGenres[i] === targetGenre || targetGenre === 'All genre') {
-            resultIds.push(cardIds[i]);
+    for (let i = 0; i < shopCardGenres.length; i++) {
+        if (shopCardGenres[i] === shopTargetGenre || shopTargetGenre === 'All genre') {
+            resultIds.push(shopCardIds[i]);
         }
     };
 
     return resultIds;
 }
 
-function refineSearchCriteria(areaSearchedIds, genreSearchedIds, nameSearchedIds) {
+function refineShopSearchCriteria(areaSearchedIds, genreSearchedIds, nameSearchedIds) {
     let idsFilteredByAreasAndGenres = [];
     for (let i = 0; i < areaSearchedIds.length; i++) {
         const index = genreSearchedIds.indexOf(areaSearchedIds[i]);
@@ -79,33 +79,33 @@ function refineSearchCriteria(areaSearchedIds, genreSearchedIds, nameSearchedIds
     return filteredIds;
 }
 
-function updateView() {
-    const targetArea = searchAreaSelect.value;
-    const targetGenre = searchGenreSelect.value;
-    const targetText = searchNameInput.value;
+function updateShopView() {
+    const shopTargetArea = shopSearchAreaSelect.value;
+    const shopTargetGenre = shopSearchGenreSelect.value;
+    const shopTargetText = shopSearchNameInput.value;
 
-    const refinedIds = refineSearchCriteria(
-        searchByArea(targetArea),
-        searchByGenre(targetGenre),
-        searchByName(targetText)
+    const refinedShopIds = refineShopSearchCriteria(
+        searchByArea(shopTargetArea),
+        searchByGenre(shopTargetGenre),
+        searchByName(shopTargetText)
     );
 
-    for (let i = 0; i < cardIds.length; i++) {
-        document.querySelector(`.card-${cardIds[i]}`).style.display = 'none';
+    for (let i = 0; i < shopCardIds.length; i++) {
+        document.querySelector(`.shop-card-${shopCardIds[i]}`).style.display = 'none';
     }
-    for (let i = 0; i < refinedIds.length; i++) {
-        document.querySelector(`.card-${refinedIds[i]}`).style.display = 'block';
+    for (let i = 0; i < refinedShopIds.length; i++) {
+        document.querySelector(`.shop-card-${refinedShopIds[i]}`).style.display = 'block';
     }
 }
 
-searchAreaSelect.addEventListener('input', () => {
-    updateView();
+shopSearchAreaSelect.addEventListener('input', () => {
+    updateShopView();
 });
 
-searchGenreSelect.addEventListener('input', () => {
-    updateView();
+shopSearchGenreSelect.addEventListener('input', () => {
+    updateShopView();
 });
 
-searchNameInput.addEventListener('input', () => {
-    updateView();
+shopSearchNameInput.addEventListener('input', () => {
+    updateShopView();
 });

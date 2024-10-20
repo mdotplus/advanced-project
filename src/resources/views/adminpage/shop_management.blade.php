@@ -17,13 +17,13 @@
                 <select class="title-group-second__search-box--area">
                     <option value="All area" selected>All area</option>
                     @foreach ($selectOptions['areas'] as $area)
-                        <option value="{{ $area->id }}">{{ $area->area }}</option>
+                        <option value="{{ $area->area }}">{{ $area->area }}</option>
                     @endforeach
                 </select>
                 <select class="title-group-second__search-box--genre">
                     <option value="All genre" selected>All genre</option>
                     @foreach ($selectOptions['categories'] as $category)
-                        <option value="{{ $category->id }}">{{ $category->category }}</option>
+                        <option value="{{ $category->category }}">{{ $category->category }}</option>
                     @endforeach
                 </select>
                 <input class="title-group-second__search-box--name" placeholder="Search ...">

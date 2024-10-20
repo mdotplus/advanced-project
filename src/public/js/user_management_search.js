@@ -1,46 +1,46 @@
-const searchAuthoritySelect = document.querySelector('.title-group__search-box--authority');
-const searchKeywordInput = document.querySelector('.title-group__search-box--keyword');
+const userSearchAuthoritySelect = document.querySelector('.title-group__search-box--authority');
+const userSearchKeywordInput = document.querySelector('.title-group__search-box--keyword');
 
-const cardNameElements = document.querySelectorAll('.user-card__name--element');
-const cardNames = [];
-for (let cardNameElement of cardNameElements) {
-    cardNames.push(cardNameElement.textContent);
+const userCardNameElements = document.querySelectorAll('.user-card__name--element');
+const userCardNames = [];
+for (let userCardNameElement of userCardNameElements) {
+    userCardNames.push(userCardNameElement.textContent);
 }
 
-const cardEmailElements = document.querySelectorAll('.user-card__email--element');
-const cardEmails = [];
-for (let cardEmailElement of cardEmailElements) {
-    cardEmails.push(cardEmailElement.textContent);
+const userCardEmailElements = document.querySelectorAll('.user-card__email--element');
+const userCardEmails = [];
+for (let userCardEmailElement of userCardEmailElements) {
+    userCardEmails.push(userCardEmailElement.textContent);
 }
 
-const cardIdElements = document.querySelectorAll('.user-card__id');
-const cardIds = [];
-for (let cardIdElement of cardIdElements) {
-    cardIds.push(cardIdElement.textContent);
+const userCardIdElements = document.querySelectorAll('.user-card__id');
+const userCardIds = [];
+for (let userCardIdElement of userCardIdElements) {
+    userCardIds.push(userCardIdElement.textContent);
 }
 
-const cardAuthorityElements = document.querySelectorAll('.user-card__authority--element');
-const cardAuthoritys = [];
-for (let cardAuthorityElement of cardAuthorityElements) {
-    cardAuthoritys.push(cardAuthorityElement.textContent);
+const userCardAuthorityElements = document.querySelectorAll('.user-card__authority--element');
+const userCardAuthoritys = [];
+for (let userCardAuthorityElement of userCardAuthorityElements) {
+    userCardAuthoritys.push(userCardAuthorityElement.textContent);
 }
 
-function searchByKeyword(targetText) {
-    let resultNameIds = [];
-    for (let i = 0; i < cardNames.length; i++) {
-        if (cardNames[i].indexOf(targetText) !== -1 || targetText === '') {
-            resultNameIds.push(cardIds[i]);
+function searchByKeyword(userTargetText) {
+    let resultUserNameIds = [];
+    for (let i = 0; i < userCardNames.length; i++) {
+        if (userCardNames[i].indexOf(userTargetText) !== -1 || userTargetText === '') {
+            resultUserNameIds.push(userCardIds[i]);
         }
     };
 
-    let resultEmailIds = [];
-    for (let i = 0; i < cardEmails.length; i++) {
-        if (cardEmails[i].indexOf(targetText) !== -1 || targetText === '') {
-            resultEmailIds.push(cardIds[i]);
+    let resultUserEmailIds = [];
+    for (let i = 0; i < userCardEmails.length; i++) {
+        if (userCardEmails[i].indexOf(userTargetText) !== -1 || userTargetText === '') {
+            resultUserEmailIds.push(userCardIds[i]);
         }
     };
 
-    const resultAllIds = resultNameIds.concat(resultEmailIds);
+    const resultAllIds = resultUserNameIds.concat(resultUserEmailIds);
     const resultIds = resultAllIds.filter((element, index) => {
         return resultAllIds.indexOf(element) === index;
     })
@@ -48,18 +48,18 @@ function searchByKeyword(targetText) {
     return resultIds;
 }
 
-function searchByAuthority(targetAuthority) {
+function searchByAuthority(userTargetAuthority) {
     let resultIds = [];
-    for (let i = 0; i < cardAuthoritys.length; i++) {
-        if (cardAuthoritys[i] === targetAuthority || targetAuthority === 'All authority') {
-            resultIds.push(cardIds[i]);
+    for (let i = 0; i < userCardAuthoritys.length; i++) {
+        if (userCardAuthoritys[i] === userTargetAuthority || userTargetAuthority === 'All authority') {
+            resultIds.push(userCardIds[i]);
         }
     };
 
     return resultIds;
 }
 
-function refineSearchCriteria(authoritySearchedIds, keywordSearchedIds) {
+function refineUserSearchCriteria(authoritySearchedIds, keywordSearchedIds) {
     let filteredIds = [];
     for (let i = 0; i < authoritySearchedIds.length; i++) {
         let index = keywordSearchedIds.indexOf(authoritySearchedIds[i]);
@@ -71,27 +71,27 @@ function refineSearchCriteria(authoritySearchedIds, keywordSearchedIds) {
     return filteredIds;
 }
 
-function updateView() {
-    const targetAuthority = searchAuthoritySelect.value;
-    const targetText = searchKeywordInput.value;
+function updateUserView() {
+    const userTargetAuthority = userSearchAuthoritySelect.value;
+    const userTargetText = userSearchKeywordInput.value;
 
-    const refinedIds = refineSearchCriteria(
-        searchByAuthority(targetAuthority),
-        searchByKeyword(targetText)
+    const refinedUserIds = refineUserSearchCriteria(
+        searchByAuthority(userTargetAuthority),
+        searchByKeyword(userTargetText)
     );
 
-    for (let i = 0; i < cardIds.length; i++) {
-        document.querySelector(`.user-card-${cardIds[i]}`).style.display = 'none';
+    for (let i = 0; i < userCardIds.length; i++) {
+        document.querySelector(`.user-card-${userCardIds[i]}`).style.display = 'none';
     }
-    for (let i = 0; i < refinedIds.length; i++) {
-        document.querySelector(`.user-card-${refinedIds[i]}`).style.display = 'block';
+    for (let i = 0; i < refinedUserIds.length; i++) {
+        document.querySelector(`.user-card-${refinedUserIds[i]}`).style.display = 'block';
     }
 }
 
-searchAuthoritySelect.addEventListener('input', () => {
-    updateView();
+userSearchAuthoritySelect.addEventListener('input', () => {
+    updateUserView();
 });
 
-searchKeywordInput.addEventListener('input', () => {
-    updateView();
+userSearchKeywordInput.addEventListener('input', () => {
+    updateUserView();
 });
