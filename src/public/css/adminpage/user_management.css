@@ -143,6 +143,23 @@
     box-shadow: 2px 2px 4px -2px;
 }
 
+.user-modal__layer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, .3);
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    opacity: 0;
+    visibility: hidden;
+}
+.user-modal__layer.is-open {
+    z-index: 999;
+    opacity: 1;
+    visibility: visible;
+}
+
 .user-modal__background {
     position: absolute;
     top: 0;
@@ -154,12 +171,10 @@
     width: 500px;
     height: 350px;
     border-radius: 15px;
-    z-index: -1;
     opacity: 0;
     visibility: hidden;
 }
-.user-modal__background.is-open {
-    z-index: 999;
+.user-modal__layer.is-open .user-modal__background {
     opacity: 1;
     visibility: visible;
 }

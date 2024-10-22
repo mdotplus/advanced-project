@@ -1,4 +1,4 @@
-const userModal = document.querySelector('.user-modal__background');
+const userModal = document.querySelector('.user-modal__layer');
 const userModalButtonsEdit = document.querySelectorAll('.user-edit-menu__modify-button');
 const userModalCloses = document.querySelectorAll('.user-modal__contents--button-close');
 
@@ -7,7 +7,6 @@ userModalButtonsEdit.forEach(button => {
         userModal.classList.add('is-open');
 
         const values = button.value.split(',');
-        console.log(values);
 
         const userIdElement = document.querySelector('.user-modal__contents--items-user-id');
         userIdElement.value = values[0];
