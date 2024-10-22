@@ -69,6 +69,11 @@ class Reservation extends Model
             $afterToday = [];
 
             foreach($reservations as $reservation) {
+                $reservation['shop_name'] = Shop::find($reservation['shop_id'])->name;
+                $reservation['shop_area'] = Shop::find($reservation['shop_id'])->area->area;
+                $reservation['shop_genre'] = Shop::find($reservation['shop_id'])->category->category;
+                $reservation['user_name'] = User::find($reservation['user_id'])->name;
+                $reservation['user_email'] = User::find($reservation['user_id'])->email;
                 array_push($all, $reservation);
 
                 if ($reservation['date'] === Carbon::now()->format('Y-m-d')) {
