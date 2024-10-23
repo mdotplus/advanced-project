@@ -37,7 +37,7 @@
                     <div class="card__five-point-scale-frame">
                         <span
                             class="card__five-point-scale"
-                            style="--point: {{ empty($reviewPoints[$shop->id]) ? 0 : $reviewPoints[$shop->id] }}"
+                            style="--point: {{ empty($reviewPoints[$shop->id]) ? 0 : $reviewPoints[$shop->id]['average'] }}"
                         >
                         </span>
                     </div>
