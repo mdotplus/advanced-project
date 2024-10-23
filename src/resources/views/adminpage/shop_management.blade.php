@@ -199,15 +199,15 @@
                         <span class="shop-reservations-modal__contents--items-title">予約状況</span>
                     </div>
                     <div class="shop-reservations-modal__contents--items-table-frame">
+                        <div class="shop-reservations-modal__contents--items-no-table">予約がありません</div>
                         <table class="shop-reservations-modal__contents--items-table">
-                            <div class="shop-reservations-modal__contents--items-no-table">予約がありません</div>
                             <thead class="shop-reservations-modal__contents--items-table-head">
-                                <tr>
-                                    <th>Date</th>
-                                    <th>Time</th>
-                                    <th>Number</th>
-                                    <th>Name</th>
-                                    <th>Email</th>
+                                <tr class="shop-reservations-modal__contents--items-table-head-row">
+                                    <th class="shop-reservations-modal__contents--items-table-head-date">Date</th>
+                                    <th class="shop-reservations-modal__contents--items-table-head-time">Time</th>
+                                    <th class="shop-reservations-modal__contents--items-table-head-number">Number</th>
+                                    <th class="shop-reservations-modal__contents--items-table-head-name">Name</th>
+                                    <th class="shop-reservations-modal__contents--items-table-head-email">Email</th>
                                 </tr>
                             </thead>
                             <tbody class="shop-reservations-modal__contents--items-table-body">
