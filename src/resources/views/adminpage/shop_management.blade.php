@@ -64,7 +64,7 @@
                                 type="button"
                                 value="{{
                                     empty($validReservations[$shop->id]) ?
-                                    'no data' :
+                                    $shop->name . ',' . $shop->area->area . ',' . $shop->category->category :
                                     collect($validReservations[$shop->id]['all'])
                                 }}"
                             >

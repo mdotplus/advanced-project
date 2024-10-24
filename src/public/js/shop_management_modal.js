@@ -49,19 +49,35 @@ const tableBody = document.querySelector('.shop-reservations-modal__contents--it
 
 shopReservationsModalButtonsShow.forEach(button => {
     button.addEventListener('click', () => {
-        shopReservationsModal.classList.add('is-open');
+        shopName.textContent = '';
+        shopArea.textContent = '';
+        shopGenre.textContent = '';
         tableBody.textContent = '';
 
-        const values = button.value;
-        if (values === 'no data') {
+        const originalValues = button.value;
+        console.log(originalValues);
+        if (
+            // $validReservations[$shop->id]が取得できているとテキストが「[{"」で始まるため、
+            // そうでないものは予約がないと判断できる
+            originalValues[0] !== '[' &&
+            originalValues[1] !== '{' &&
+            originalValues[2] !== '"'
+        ) {
+            const splitValues = originalValues.split(',');
+            shopName.textContent = splitValues[0];
+            shopArea.textContent = splitValues[1];
+            shopGenre.textContent = splitValues[2];
+
             noTable.style.display = '';
             tableHead.style.display = 'none';
             tableBody.style.display = 'none';
 
+            shopReservationsModal.classList.add('is-open');
+
             return;
         }
 
-        const values2 = values
+        const replacedValues = originalValues
             .replace('[', '')
             .replace(']', '')
             .replace(/},{/g, '}},{{')
@@ -72,9 +88,8 @@ shopReservationsModalButtonsShow.forEach(button => {
                     .replace('}', '')
                     .split(',');
             });
-        console.log(values2);
         const realValue = [];
-        values2.forEach(value => {
+        replacedValues.forEach(value => {
             const tmp = [];
             tmp.date = value[3].replace('date:', '');
             tmp.time = value[4].replace('time:', '').replace(':00', '');
@@ -99,7 +114,6 @@ shopReservationsModalButtonsShow.forEach(button => {
 
             realValue.push(tmp);
         });
-        console.log(realValue);
 
         const trFragment = document.createDocumentFragment();
         const tdFragment = document.createDocumentFragment();
@@ -132,12 +146,12 @@ shopReservationsModalButtonsShow.forEach(button => {
             tr.appendChild(tdFragment);
             trFragment.appendChild(tr);
         });
+        tableBody.appendChild(trFragment);
 
         noTable.style.display = 'none';
         tableHead.style.display = '';
         tableBody.style.display = '';
 
-        tableBody.appendChild(trFragment);
         shopReservationsModal.classList.add('is-open');
     })
 });
