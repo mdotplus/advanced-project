@@ -55,14 +55,18 @@
                             </form>
                         </li>
                         <li><a href="/mypage">Mypage</a></li>
-                        <li><a href="/adminpage">Adminpage</a></li>
+                        @unless (auth()->user()->authority_id === 3)
+                            <li><a href="/adminpage">Adminpage</a></li>
+                        @endunless
                     @endauth
                 </ul>
             </div>
         </div>
+
         <div class="background"></div>
         @yield ('content')
         @yield ('content_second')
+
         <script src="{{ asset('/js/app.js') }}"></script>
     </main>
 </body>

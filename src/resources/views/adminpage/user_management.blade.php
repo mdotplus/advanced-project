@@ -87,6 +87,9 @@
             </div>
         </div>
     </div>
+
+    <hr class="border-line">
+
     <script src="{{ asset('/js/user_management_search.js') }}"></script>
     <script src="{{ asset('/js/user_management_modal.js') }}"></script>
 @endsection

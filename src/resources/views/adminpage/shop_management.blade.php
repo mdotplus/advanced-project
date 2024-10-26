@@ -3,7 +3,6 @@
 @endsection
 
 @section ('content_second')
-    <hr class="border-line">
     <div class="title-group-second">
         <div class="title-group-second__left">
             <div class="title-group-second__title">店舗情報管理</div>
@@ -30,8 +29,12 @@
             </div>
         </div>
     </div>
+
     <div class="shop-cards">
         @foreach ($shops as $shop)
+            @if (auth()->user()->authority_id === 2)
+                @continue ($shop->user->id !== Auth::id())
+            @endif
             <div class="shop-card-frame shop-card-{{ $shop->id }}">
                 <div class="shop-card">
                     <div class="shop-card__id" hidden>{{ $shop->id }}</div>
@@ -135,7 +138,9 @@
             </div>
         @endforeach
     </div>
+
     {{ $users->links() }}
+
     <div class="shop-modal__layer">
         <div class="shop-modal__background">
             <div class="shop-modal__contents-frame">
@@ -174,6 +179,7 @@
             </div>
         </div>
     </div>
+
     <div class="shop-reservations-modal__layer">
         <div class="shop-reservations-modal__background">
             <div class="shop-reservations-modal__contents-frame">
@@ -218,6 +224,7 @@
             </div>
         </div>
     </div>
+
     <script src="{{ asset('/js/shop_management_search.js') }}"></script>
     <script src="{{ asset('/js/shop_management_modal.js') }}"></script>
 @endsection
