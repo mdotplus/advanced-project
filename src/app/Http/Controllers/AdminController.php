@@ -83,4 +83,10 @@ class AdminController extends Controller
         Shop::find($request->shop_id)->update($request->all());
         return redirect('adminpage');
     }
+
+    public function shopDelete(Request $request)
+    {
+        Shop::find($request->shop_id)->delete();
+        return redirect('adminpage');
+    }
 }

@@ -126,9 +126,9 @@
                     >
                         編集する
                     </button>
-                    <form action="/adminpage/delete" method="post">
+                    <form action="/adminpage/shop/delete" method="post">
                         @csrf
-                        <input type="hidden" name="user_id" value="{{ $shop->id }}">
+                        <input type="hidden" name="shop_id" value="{{ $shop->id }}">
                         <button class="shop-edit-menu__delete-button" type="submit">削除する</button>
                     </form>
                 </div>
