@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\IndexController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\Request;
@@ -29,6 +30,14 @@ Route::group(['middleware' => ['verified', 'auth']], function () {
     Route::get('/mypage', [IndexController::class, 'mypage']);
     Route::post('/review', [IndexController::class, 'review']);
     Route::post('/review/update', [IndexController::class, 'reviewUpdate']);
+
+    Route::get('/adminpage', [AdminController::class, 'adminpage']);
+    Route::post('/adminpage/user/update', [AdminController::class, 'userUpdate']);
+    Route::post('/adminpage/user/delete', [AdminController::class, 'userDelete']);
+    Route::get('/adminpage/shop/create/{userId}', [AdminController::class, 'shopCreate']);
+    Route::post('/adminpage/shop/register', [AdminController::class, 'shopRegister']);
+    Route::post('/adminpage/shop/update', [AdminController::class, 'shopUpdate']);
+    Route::post('/adminpage/shop/delete', [AdminController::class, 'shopDelete']);
 });
 
 Route::get('/email/verify', function () {

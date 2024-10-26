@@ -1,0 +1,495 @@
+.title-group-second {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0 40px;
+    margin-top: 20px;
+}
+
+.title-group-second__title {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.title-group-second__right {
+    display: flex;
+}
+
+.title-group-second__create-new-shop-button {
+    color: #fff;
+    background: #3560f6;
+    width: 150px;
+    height: 40px;
+    border: none;
+    border-radius: 8px;
+    box-shadow: 2px 2px 4px -2px black;
+    margin-right: 20px;
+    cursor: pointer;
+}
+
+.title-group-second__search-box {
+    display: flex;
+    align-items: center;
+    background: #fff;
+    width: 500px;
+    height: 40px;
+    border-radius: 4px;
+    box-shadow: 2px 2px 4px -2px;
+    padding-left: 5px;
+}
+
+.title-group-second__search-box--area,
+.title-group-second__search-box--genre,
+.title-group-second__search-box--name {
+    font-weight: bold;
+    border: none;
+}
+
+.title-group-second__search-box--area,
+.title-group-second__search-box--genre {
+    width: 100px;
+    height: 25px;
+    -webkit-appearance: none;
+    appearance: none;
+    background-image: url("../../img/arrow.svg");
+    background-repeat: no-repeat;
+    background-size: 25px auto;
+    background-position: right 1px center;
+    border-right: 1px solid #e2e2e2;
+    padding-left: 10px;
+    cursor: pointer;
+}
+
+.title-group-second__search-box--name {
+    width: 300px;
+    height: 35px;
+    -webkit-appearance: none;
+    appearance: none;
+    background-image: url("../../img/loupe.svg");
+    background-repeat: no-repeat;
+    background-size: 25px auto;
+    background-position: left 10px center;
+    padding-left: 40px;
+}
+
+.shop-cards {
+    width: 95%;
+    margin: 40px auto;
+}
+
+.shop-card-frame {
+    margin: 10px 5px;
+}
+
+.shop-card {
+    display: flex;
+    background: #fff;
+    width: 100%;
+    height: 350px;
+    border-radius: 8px;
+    padding: 10px;
+}
+
+.shop-card-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 200px;
+}
+
+.shop-card__reservation {
+    display: flex;
+    flex-wrap: wrap;
+    color: #fff;
+    background: #3560f6;
+    width: 100%;
+    height: 120px;
+    border-radius: 8px;
+}
+
+.shop-card__reservation--all,
+.shop-card__reservation--today {
+    width: 50%;
+    margin: auto 0;
+}
+.shop-card__reservation--all {
+    padding-left: 10px;
+}
+.shop-card__reservation--today {
+    padding-right: 10px;
+}
+
+.shop-card__reservation--detail-button {
+    color: #fff;
+    background: #003ff5;
+    width: 100%;
+    border: none;
+    border-radius: 0 0 8px 8px;
+    cursor: pointer;
+}
+
+.shop-card__reservation--number {
+    font-size: 32px;
+    font-weight: bold;
+}
+
+.shop-card__no-image {
+    color: #fff;
+    background: #ccc;
+    width: 200px;
+    height: 200px;
+    line-height: 200px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.shop-card__image {
+    width: 200px;
+    height: 200px;
+}
+
+.shop-card-right {
+    width: 80%;
+    padding: 20px;
+}
+
+.shop-card-right__top {
+    display: flex;
+    width: 100%;
+    height: 100px;
+}
+
+.shop-card-right__bottom {
+    width: 100%;
+}
+
+.shop-card__name,
+.shop-card__area,
+.shop-card__genre {
+    width: 20%;
+}
+
+.shop-card__name--element,
+.shop-card__area--element,
+.shop-card__genre--element {
+    display: inline-block;
+    font-size: 22px;
+    font-weight: bold;
+    padding-top: 5px;
+}
+
+.shop-card__review {
+    width: 40%;
+}
+
+.shop-card__review--total-point-frame {
+    --one-scale-width: 30px;
+    display: flex;
+    align-items: center;
+    height: calc(1 * var(--one-scale-width));
+    padding-top: 5px;
+}
+
+.shop-card__review--total-point-star {
+    position: relative;
+    z-index: 0;
+    display: inline-block;
+    white-space: nowrap;
+    color: #CCC;
+    font-size: var(--one-scale-width);
+    width: calc(5 * var(--one-scale-width));
+}
+.shop-card__review--total-point-star:before,
+.shop-card__review--total-point-star:after {
+    content: '★★★★★';
+}
+.shop-card__review--total-point-star:after {
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    color: #ffcf32;
+    width: calc(var(--point) * var(--one-scale-width));
+}
+
+.shop-card__review--total-point-number {
+    margin-left: 10px;
+}
+
+.shop-card__review--total-point-number-average,
+.shop-card__review--total-point-number-count {
+    display: inline-block;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.shop-card__review--total-point-number-no-review {
+    display: inline-block;
+    font-size: 12px;
+}
+
+.shop-card__profile--element {
+    display: inline-block;
+    font-weight: bold;
+    padding-top: 5px;
+}
+
+.shop-edit-menu {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+.shop-edit-menu__modify-button,
+.shop-edit-menu__delete-button {
+    font-weight: bold;
+    border: none;
+    margin-top: 5px;
+    cursor: pointer;
+}
+.shop-edit-menu__modify-button {
+    color: #3560f6;
+}
+.shop-edit-menu__delete-button {
+    color: #EB3223;
+}
+
+.shop-modal__layer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, .3);
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    opacity: 0;
+    visibility: hidden;
+}
+.shop-modal__layer.is-open {
+    z-index: 999;
+    opacity: 1;
+    visibility: visible;
+}
+
+.shop-modal__background {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    background: #3560f6;
+    width: 700px;
+    height: 550px;
+    border-radius: 15px;
+    opacity: 0;
+    visibility: hidden;
+}
+.shop-modal__layer.is-open .shop-modal__background {
+    opacity: 1;
+    visibility: visible;
+}
+
+.shop-modal__contents--items {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 20px;
+}
+
+.shop-modal__contents--items-shop-name-frame,
+.shop-modal__contents--items-area-frame,
+.shop-modal__contents--items-category-frame,
+.shop-modal__contents--items-profile-frame {
+    display: flex;
+    align-items; center;
+    justify-content: space-between;
+    width: 650px;
+    margin: 15px auto;
+}
+.shop-modal__contents--items-shop-name-frame,
+.shop-modal__contents--items-area-frame,
+.shop-modal__contents--items-category-frame {
+    height: 40px;
+}
+.shop-modal__contents--items-profile-frame {
+    height: 180px;
+}
+
+.shop-modal__contents--items-shop-name-title,
+.shop-modal__contents--items-area-title,
+.shop-modal__contents--items-category-title,
+.shop-modal__contents--items-profile-title {
+    color: #fff;
+    font-weight: bold;
+}
+.shop-modal__contents--items-shop-name-title,
+.shop-modal__contents--items-area-title,
+.shop-modal__contents--items-category-title {
+    line-height: 45px;
+}
+
+.shop-modal__contents--items-shop-name,
+.shop-modal__contents--items-area,
+.shop-modal__contents--items-category,
+.shop-modal__contents--items-profile {
+    display: inline-block;
+    font-size: 20px;
+    border-radius: 8px;
+    padding: 0 10px;
+}
+.shop-modal__contents--items-shop-name {
+    color: #fff;
+    background: #5580f7;
+    width: 85%;
+    height: 50px;
+    line-height: 45px;
+    cursor: not-allowed;
+}
+.shop-modal__contents--items-area,
+.shop-modal__contents--items-category {
+    color: #000;
+    background: #fff;
+    -webkit-appearance: none;
+    appearance: none;
+    background-image: url("../../img/arrow.svg");
+    background-repeat: no-repeat;
+    background-size: 25px auto;
+    background-position: left 120px center;
+    width: 85%;
+    height: 50px;
+    line-height: 45px;
+}
+.shop-modal__contents--items-profile {
+    color: #000;
+    background: #fff;
+    width: 85%;
+    height: 100%;
+    line-height: 30px;
+}
+
+.shop-modal__contents--items-button {
+    color: #fff;
+    background: #003ff5;
+    font-weight: bold;
+    width: 350px;
+    height: 40px;
+    border: none;
+    border-radius: 8px;
+    margin-top: 30px;
+    cursor: pointer;
+}
+
+.shop-reservations-modal__layer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, .3);
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    opacity: 0;
+    visibility: hidden;
+}
+.shop-reservations-modal__layer.is-open {
+    z-index: 999;
+    opacity: 1;
+    visibility: visible;
+}
+
+.shop-reservations-modal__background {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    background: #fff;
+    width: 700px;
+    height: 550px;
+    border-radius: 15px;
+    opacity: 0;
+    visibility: hidden;
+}
+.shop-reservations-modal__layer.is-open .shop-reservations-modal__background {
+    opacity: 1;
+    visibility: visible;
+}
+
+.shop-reservations-modal__contents--items-shop-info-frame {
+    display: flex;
+    padding: 10px;
+}
+
+.shop-reservations-modal__contents--items-shop-name-frame,
+.shop-reservations-modal__contents--items-area-frame,
+.shop-reservations-modal__contents--items-genre-frame {
+    font-size: 24px;
+    font-weight: bold;
+}
+.shop-reservations-modal__contents--items-shop-name-frame {
+    width: 40%;
+}
+.shop-reservations-modal__contents--items-area-frame,
+.shop-reservations-modal__contents--items-genre-frame {
+    width: 30%;
+}
+
+.shop-reservations-modal__contents--items-title-frame {
+    margin-top: 30px;
+}
+
+.shop-reservations-modal__contents--items-title {
+    font-size: 18px;
+    font-weight: bold;
+    padding: 10px;
+}
+
+.shop-reservations-modal__contents--items-no-table {
+    text-align: center;
+    margin: 30px;
+}
+
+.shop-reservations-modal__contents--items-table-frame {
+    width: 100%;
+    padding: 0 20px;
+}
+
+.shop-reservations-modal__contents--items-table,
+.shop-reservations-modal__contents--items-table-head,
+.shop-reservations-modal__contents--items-table-head-row {
+    width: 100%;
+    border-bottom: 1px solid #000;
+}
+
+.shop-reservations-modal__contents--items-table-head-date {
+    width: 15%;
+    text-align: left;
+}
+
+.shop-reservations-modal__contents--items-table-head-time {
+    width: 10%;
+    text-align: left;
+}
+
+.shop-reservations-modal__contents--items-table-head-number {
+    width: 15%;
+    text-align: left;
+}
+
+.shop-reservations-modal__contents--items-table-head-name {
+    width: 25%;
+    text-align: left;
+}
+
+.shop-reservations-modal__contents--items-table-head-email {
+    width: 35%;
+    text-align: left;
+}
+
+.shop-reservations-modal__contents--items-table-body tr {
+    border-bottom: 1px dashed #000;
+}

@@ -87,7 +87,10 @@ class Review extends Model
             }
 
             $average = array_sum($points) / count($points);
-            $reviewPoints[$shopId] = $average;
+            $reviewPoints[$shopId] = [
+                'count' => count($points),
+                'average' => $average,
+            ];
         }
 
         return $reviewPoints;

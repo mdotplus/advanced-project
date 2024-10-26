@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="{{ asset('css/sanitize.css') }}">
     <link rel="stylesheet" href="{{ asset('css/common.css') }}">
     @yield ('css')
+    @yield ('css_second')
 </head>
 
 <body>
@@ -34,7 +35,7 @@
         </div>
     </header>
 
-    <main>
+    <main class="main">
         <div class="modal__background">
             <div class="modal__contents">
                 <button class="modal__contents--button-close">
@@ -54,13 +55,18 @@
                             </form>
                         </li>
                         <li><a href="/mypage">Mypage</a></li>
-                        <li><a href="/adminpage">Adminpage</a></li>
+                        @unless (auth()->user()->authority_id === 3)
+                            <li><a href="/adminpage">Adminpage</a></li>
+                        @endunless
                     @endauth
                 </ul>
             </div>
         </div>
+
         <div class="background"></div>
         @yield ('content')
+        @yield ('content_second')
+
         <script src="{{ asset('/js/app.js') }}"></script>
     </main>
 </body>
