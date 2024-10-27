@@ -6,6 +6,29 @@
     margin-top: 20px;
 }
 
+.title-group__left {
+    display: flex;
+    align-items: center;
+}
+
+.title-group__notice {
+    display: flex;
+    align-items: center;
+    margin-left: 20px;
+    cursor: pointer;
+}
+
+.title-group__notice--image {
+    width: 30px;
+    height: 30px;
+}
+
+.title-group__notice--button {
+    color: #3560f6;
+    font-weight: bold;
+    text-decoration: none;
+}
+
 .title-group__title {
     font-size: 20px;
     font-weight: bold;
