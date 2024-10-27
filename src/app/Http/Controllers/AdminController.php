@@ -50,6 +50,19 @@ class AdminController extends Controller
         return redirect('adminpage');
     }
 
+    public function userNotice()
+    {
+        $recipients = User::select(['name', 'email'])->get();
+
+        return view('/adminpage/notice', [
+            'recipients' => $recipients,
+        ]);
+    }
+
+    public function userNoticeSend()
+    {
+    }
+
     public function shopCreate($userId)
     {
         $selectOptions = [
