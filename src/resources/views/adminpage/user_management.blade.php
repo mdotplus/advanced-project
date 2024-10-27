@@ -8,7 +8,7 @@
             <div class="title-group__title">ユーザー管理</div>
             <div class="title-group__notice">
                 <img class="title-group__notice--image" src="img/notice-gray.svg" alt="紙飛行機のアイコン">
-                <a class="title-group__notice--button" href="adminpage/user/notice">お知らせ作成</a>
+                <a class="title-group__notice--button" href="/notice">お知らせ作成</a>
             </div>
         </div>
         <div class="title-group__right">

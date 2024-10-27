@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\IndexController;
+use App\Http\Controllers\NoticeController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -39,8 +40,8 @@ Route::group(['middleware' => ['verified', 'auth']], function () {
     Route::post('/adminpage/shop/update', [AdminController::class, 'shopUpdate']);
     Route::post('/adminpage/shop/delete', [AdminController::class, 'shopDelete']);
 
-    Route::get('/adminpage/user/notice', [AdminController::class, 'userNotice']);
-    Route::get('/adminpage/user/notice/send', [AdminController::class, 'userNoticeSend']);
+    Route::get('/notice', [NoticeController::class, 'notice']);
+    Route::get('/notice/send', [NoticeController::class, 'noticeSend']);
 });
 
 Route::get('/email/verify', function () {
