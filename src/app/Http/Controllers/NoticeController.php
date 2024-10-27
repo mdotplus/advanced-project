@@ -20,7 +20,13 @@ class NoticeController extends Controller
 
     public function noticeSend(Request $request)
     {
-        Mail::to($request->recipient)->send(new Notice($request));
+        if ($request->recipients === 'all') {
+            $request->recipients = User::select('email')->get()->toArray();
+        }
+
+        foreach ($request->recipients as $recipient) {
+            Mail::to($recipient)->send(new Notice($request));
+        }
 
         return redirect('adminpage');
     }

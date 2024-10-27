@@ -20,7 +20,7 @@
 
         <div class="notice-form__group notice-form__recipient-group">
             <label for="recipient">宛先(複数選択可):</label><br>
-            <select class="notice-form__recipient" id="recipient" name="recipient" multiple>
+            <select class="notice-form__recipient" id="recipient" name="recipients[]" multiple>
                 <option
                     value=""
                     {{ empty(old('recipient')) ? 'selected' : '' }}
