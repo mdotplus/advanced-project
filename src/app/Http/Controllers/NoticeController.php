@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\NoticeRequest;
 use App\Mail\Notice;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -18,7 +19,7 @@ class NoticeController extends Controller
         ]);
     }
 
-    public function noticeSend(Request $request)
+    public function noticeSend(NoticeRequest $request)
     {
         if ($request->recipients === 'all') {
             $request->recipients = User::select('email')->get()->toArray();
