@@ -41,7 +41,7 @@ Route::group(['middleware' => ['verified', 'auth']], function () {
     Route::post('/adminpage/shop/delete', [AdminController::class, 'shopDelete']);
 
     Route::get('/notice', [NoticeController::class, 'notice']);
-    Route::get('/notice/send', [NoticeController::class, 'noticeSend']);
+    Route::post('/notice/send', [NoticeController::class, 'noticeSend']);
 });
 
 Route::get('/email/verify', function () {

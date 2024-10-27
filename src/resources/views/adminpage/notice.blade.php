@@ -6,7 +6,8 @@
 
 @section ('content')
     <div class="title">お知らせ作成</div>
-    <form class="notice-form" action="" method="post">
+    <form class="notice-form" action="/notice/send" method="post">
+        @csrf
         <div class="notice-form__group notice-form__title-group">
             <label for="title">タイトル:</label><br>
             <input class="notice-form__title" id="title" type="text" name="title" value="{{ old('title') }}" placeholder="タイトルを入力してください">

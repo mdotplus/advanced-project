@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\Notice;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class NoticeController extends Controller
 {
@@ -16,7 +18,10 @@ class NoticeController extends Controller
         ]);
     }
 
-    public function noticeSend()
+    public function noticeSend(Request $request)
     {
+        Mail::to($request->recipient)->send(new Notice($request));
+
+        return redirect('adminpage');
     }
 }
