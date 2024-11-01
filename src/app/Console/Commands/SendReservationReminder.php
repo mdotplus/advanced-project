@@ -6,7 +6,7 @@ use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\Reminder;
 
-class SendReservationRiminder extends Command
+class SendReservationReminder extends Command
 {
     /**
      * The name and signature of the console command.
