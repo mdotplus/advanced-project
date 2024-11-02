@@ -7,6 +7,8 @@
         <div>日時：<span>{{ $reservation->date }}</span></div>
         <div>時間：<span>{{ substr($reservation->time, 0, 5) }}</span></div>
         <div>人数：<span>{{ $reservation->number }}</span></div>
-        <p>ご来店お待ちしております。</p>
+        <p>ご来店時にこちらのQRコードをご提示ください。</p>
+        <div>{!! QrCode::generate(url('http://127.0.0.1/mypage')) !!}</div>
+        <p>お待ちしております。</p>
     </body>
 </html>
