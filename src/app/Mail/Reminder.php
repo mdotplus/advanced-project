@@ -11,14 +11,16 @@ class Reminder extends Mailable
 {
     use Queueable, SerializesModels;
 
+    public $reservation;
+
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($reservation)
     {
-        //
+        $this->reservation = $reservation;
     }
 
     /**
