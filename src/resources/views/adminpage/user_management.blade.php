@@ -6,6 +6,10 @@
     <div class="title-group">
         <div class="title-group__left">
             <div class="title-group__title">ユーザー管理</div>
+            <div class="title-group__notice">
+                <img class="title-group__notice--image" src="img/notice-gray.svg" alt="紙飛行機のアイコン">
+                <a class="title-group__notice--button" href="/notice">お知らせ作成</a>
+            </div>
         </div>
         <div class="title-group__right">
             <div class="title-group__search-box">
@@ -19,6 +23,7 @@
             </div>
         </div>
     </div>
+
     <div class="user-cards">
         @foreach ($users as $user)
             <div class="user-card-frame user-card-{{ $user->id }}">
@@ -56,7 +61,9 @@
             </div>
         @endforeach
     </div>
+
     {{ $users->links() }}
+
     <div class="user-modal__layer">
         <div class="user-modal__background">
             <div class="user-modal__contents-frame">
