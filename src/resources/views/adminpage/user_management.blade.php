@@ -68,7 +68,7 @@
         <div class="user-modal__background">
             <div class="user-modal__contents-frame">
                 <button class="user-modal__contents--button-close">
-                    <img class="user-modal__contents--image-close" src="{{ asset('img/menu-close.png') }}" alt="close">
+                    <img class="user-modal__contents--image-close" src="{{ asset('img/menu-close.svg') }}" alt="close">
                 </button>
                 <form class="user-modal__contents--items" action="/adminpage/user/update" method="post">
                     @csrf
