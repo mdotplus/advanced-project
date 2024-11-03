@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\IndexController;
+use App\Http\Controllers\MypageController;
 use App\Http\Controllers\NoticeController;
 use App\Http\Controllers\StripeController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
@@ -22,27 +23,36 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [IndexController::class, 'index']);
 
 Route::group(['middleware' => ['verified', 'auth']], function () {
-    Route::get('/thanks', [IndexController::class, 'thanks']);
-    Route::get('/detail/{shopId}/{redirectPath}', [IndexController::class, 'detail']);
-    Route::post('/reservation', [IndexController::class, 'reservation']);
-    Route::post('/reservation/delete', [IndexController::class, 'reservationDelete']);
-    Route::post('/reservation/modify/{reservationId}/{redirectPath}', [IndexController::class, 'reservationModify']);
-    Route::post('/reservation/update', [IndexController::class, 'reservationUpdate']);
-    Route::post('/favorite/{userId}/{shopId}/{redirectPath}', [IndexController::class, 'favorite']);
-    Route::get('/mypage', [IndexController::class, 'mypage']);
-    Route::post('/review', [IndexController::class, 'review']);
-    Route::post('/review/update', [IndexController::class, 'reviewUpdate']);
+    Route::controller(IndexController::class)->group(function () {
+        Route::get('/thanks', 'thanks');
+        Route::get('/detail/{shopId}/{redirectPath}', 'detail');
+        Route::post('/reservation', 'reservation');
+        Route::post('/reservation/delete', 'reservationDelete');
+        Route::post('/reservation/modify/{reservationId}/{redirectPath}', 'reservationModify');
+        Route::post('/reservation/update', 'reservationUpdate');
+        Route::post('/favorite/{userId}/{shopId}/{redirectPath}', 'favorite');
+    });
 
-    Route::get('/adminpage', [AdminController::class, 'adminpage']);
-    Route::post('/adminpage/user/update', [AdminController::class, 'userUpdate']);
-    Route::post('/adminpage/user/delete', [AdminController::class, 'userDelete']);
-    Route::get('/adminpage/shop/create/{userId}', [AdminController::class, 'shopCreate']);
-    Route::post('/adminpage/shop/register', [AdminController::class, 'shopRegister']);
-    Route::post('/adminpage/shop/update', [AdminController::class, 'shopUpdate']);
-    Route::post('/adminpage/shop/delete', [AdminController::class, 'shopDelete']);
+    Route::controller(MypageController::class)->group(function () {
+        Route::get('/mypage', 'mypage');
+        Route::post('/review', 'review');
+        Route::post('/review/update', 'reviewUpdate');
+    });
 
-    Route::get('/notice', [NoticeController::class, 'notice']);
-    Route::post('/notice/send', [NoticeController::class, 'noticeSend']);
+    Route::controller(AdminController::class)->prefix('adminpage')->group(function () {
+        Route::get('', 'adminpage');
+        Route::post('/user/update', 'userUpdate');
+        Route::post('/user/delete', 'userDelete');
+        Route::get('/shop/create/{userId}', 'shopCreate');
+        Route::post('/shop/register', 'shopRegister');
+        Route::post('/shop/update', 'shopUpdate');
+        Route::post('/shop/delete', 'shopDelete');
+    });
+
+    Route::controller(NoticeController::class)->prefix('notice')->group(function () {
+        Route::get('', 'notice');
+        Route::post('/send', 'noticeSend');
+    });
 
     Route::post('/create-checkout-session', [StripeController::class, 'createCheckoutSession']);
     Route::get('/success', [IndexController::class, 'index'])->name('success');
