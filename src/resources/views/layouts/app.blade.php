@@ -17,7 +17,7 @@
         <div class="header__frame">
             <div class="header__frame--left">
                 <button class="header__menu--button">
-                    <img class="header__menu--image" src="{{ asset('img/menu.png') }}" alt="menu">
+                    <img class="header__menu--image" src="{{ asset('img/menu.svg') }}" alt="menu">
                 </button>
                 <a class="header__logo" href="/">
                     Rese
@@ -39,7 +39,7 @@
         <div class="modal__background">
             <div class="modal__contents">
                 <button class="modal__contents--button-close">
-                    <img class="modal__contents--image-close" src="{{ asset('img/menu-close.png') }}" alt="close">
+                    <img class="modal__contents--image-close" src="{{ asset('img/menu-close.svg') }}" alt="close">
                 </button>
                 <ul class="modal__contents--list">
                     <li><a href="/">Home</a></li>

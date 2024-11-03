@@ -145,7 +145,7 @@
         <div class="shop-modal__background">
             <div class="shop-modal__contents-frame">
                 <button class="shop-modal__contents--button-close">
-                    <img class="shop-modal__contents--image-close" src="{{ asset('img/menu-close.png') }}" alt="close">
+                    <img class="shop-modal__contents--image-close" src="{{ asset('img/menu-close.svg') }}" alt="close">
                 </button>
                 <form class="shop-modal__contents--items" action="/adminpage/shop/update" method="post">
                     @csrf
@@ -184,7 +184,7 @@
         <div class="shop-reservations-modal__background">
             <div class="shop-reservations-modal__contents-frame">
                 <button class="shop-reservations-modal__contents--button-close">
-                    <img class="shop-reservations-modal__contents--image-close" src="{{ asset('img/menu-close.png') }}" alt="close">
+                    <img class="shop-reservations-modal__contents--image-close" src="{{ asset('img/menu-close.svg') }}" alt="close">
                 </button>
                 <div class="shop-reservations-modal__contents--items">
                     <div class="shop-reservations-modal__contents--items-shop-info-frame">

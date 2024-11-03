@@ -9,7 +9,7 @@
         <div class="shop">
             <div class="title-group">
                 <a class="button-back" href="/mypage">
-                    <img class="button-back__image" src="{{ asset('img/back.png') }}" alt="back">
+                    <img class="button-back__image" src="{{ asset('img/arrow-back.svg') }}" alt="back">
                 </a>
                 <div class="shop__name">{{ $reservedShop->shop->name }}</div>
             </div>
