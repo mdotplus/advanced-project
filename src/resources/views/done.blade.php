@@ -10,9 +10,13 @@
             <div class="done-contents">
                 <p>ご予約ありがとうございます</p>
             </div>
+            <form action="/create-checkout-session" method="post">
+                @csrf
+                <button class="button" type="submit">事前決済する</button>
+            </form>
             <form class="back-button" action="/" method="get">
                 @csrf
-                <button class="button" type="submit">戻る</button>
+                <button class="button" type="submit">決済せずに戻る</button>
             </form>
         </div>
     </div>
