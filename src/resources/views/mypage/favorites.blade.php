@@ -13,7 +13,7 @@
                             #<span class="card__hashtag--category">{{ $shop->category['category'] }}</span>
                         </div>
                         <div class="favorites-card__five-point-scale-frame">
-                            <span class="favorites-card__five-point-scale" style="--score: 2.3"></span>
+                            <span class="favorites-card__five-point-scale" style="--score: {{ empty($reviewPoints[$shop->id]) ? 0 : $reviewPoints[$shop->id]['average'] }}"></span>
                         </div>
                         <div class="favorites-card__click-contents">
                             <form class="favorites-card__detail" action="/detail/{{ $shop->id }}/mypage" method="get">

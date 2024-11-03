@@ -100,6 +100,7 @@ class IndexController extends Controller
         $reservedShopsPast = Reservation::getReservedShopsPast(Auth::id());
         $reviewIds = Review::getReviewIds(Auth::id());
         $reviewedReservationIds = Review::getReviewedReservationIds(Auth::id());
+        $reviewPoints = Review::getReviewPoints();
         $favoriteShopIds = Favorite::getFavoriteShopIds(Auth::id());
 
         return view('layouts/mypage', [
@@ -108,6 +109,7 @@ class IndexController extends Controller
             'reservedShopsPast' => $reservedShopsPast,
             'reviewIds' => $reviewIds,
             'reviewedReservationIds' => $reviewedReservationIds,
+            'reviewPoints' => $reviewPoints,
             'favoriteShopIds' => $favoriteShopIds,
         ]);
     }
