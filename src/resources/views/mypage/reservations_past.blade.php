@@ -13,7 +13,7 @@
                                 @csrf
                                 <button class="reservations-past-card__detail-button" type="submit">詳細</button>
                             </form>
-                            <form class="reservations-past-card__favorite" action="/favorite/{{ Auth::id() }}/{{ $shop->shop_id }}" method="post">
+                            <form class="reservations-past-card__favorite" action="/favorite/{{ Auth::id() }}/{{ $shop->shop_id }}/mypage" method="post">
                                 @csrf
                                 <button class="reservations-past-card__favorite-button" type="submit">
                                     @if (in_array($shop->shop_id, $favoriteShopIds))
