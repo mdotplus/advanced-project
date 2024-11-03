@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\IndexController;
+use App\Http\Controllers\MypageController;
 use App\Http\Controllers\NoticeController;
 use App\Http\Controllers\StripeController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
@@ -29,9 +30,10 @@ Route::group(['middleware' => ['verified', 'auth']], function () {
     Route::post('/reservation/modify/{reservationId}/{redirectPath}', [IndexController::class, 'reservationModify']);
     Route::post('/reservation/update', [IndexController::class, 'reservationUpdate']);
     Route::post('/favorite/{userId}/{shopId}/{redirectPath}', [IndexController::class, 'favorite']);
-    Route::get('/mypage', [IndexController::class, 'mypage']);
-    Route::post('/review', [IndexController::class, 'review']);
-    Route::post('/review/update', [IndexController::class, 'reviewUpdate']);
+
+    Route::get('/mypage', [MypageController::class, 'mypage']);
+    Route::post('/review', [MypageController::class, 'review']);
+    Route::post('/review/update', [MypageController::class, 'reviewUpdate']);
 
     Route::get('/adminpage', [AdminController::class, 'adminpage']);
     Route::post('/adminpage/user/update', [AdminController::class, 'userUpdate']);

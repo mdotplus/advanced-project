@@ -92,48 +92,4 @@ class IndexController extends Controller
 
         return redirect($redirectPath);
     }
-
-    public function mypage()
-    {
-        $shops = Shop::all();
-        $reservedShopsPresent = Reservation::getReservedShopsPresent(Auth::id());
-        $reservedShopsPast = Reservation::getReservedShopsPast(Auth::id());
-        $reviewIds = Review::getReviewIds(Auth::id());
-        $reviewedReservationIds = Review::getReviewedReservationIds(Auth::id());
-        $reviewPoints = Review::getReviewPoints();
-        $favoriteShopIds = Favorite::getFavoriteShopIds(Auth::id());
-
-        return view('layouts/mypage', [
-            'shops' => $shops,
-            'reservedShopsPresent' => $reservedShopsPresent,
-            'reservedShopsPast' => $reservedShopsPast,
-            'reviewIds' => $reviewIds,
-            'reviewedReservationIds' => $reviewedReservationIds,
-            'reviewPoints' => $reviewPoints,
-            'favoriteShopIds' => $favoriteShopIds,
-        ]);
-    }
-
-    public function review(Request $request)
-    {
-        $reservedShop = Reservation::find($request->reservation_id);
-        $review = Review::find($request->review_id);
-
-        return view('review', [
-            'reservedShop' => $reservedShop,
-            'review' => $review,
-        ]);
-    }
-
-    public function reviewUpdate(Request $request)
-    {
-        if($request->review_id) {
-            Review::find($request->review_id)->update($request->all());
-        } else {
-            Review::create($request->all());
-        }
-
-        return redirect('mypage');
-    }
-
 }
