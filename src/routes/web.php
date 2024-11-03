@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\NoticeController;
+use App\Http\Controllers\StripeController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -42,6 +43,10 @@ Route::group(['middleware' => ['verified', 'auth']], function () {
 
     Route::get('/notice', [NoticeController::class, 'notice']);
     Route::post('/notice/send', [NoticeController::class, 'noticeSend']);
+
+    Route::post('/create-checkout-session', [StripeController::class, 'createCheckoutSession']);
+    Route::get('/success', [IndexController::class, 'index'])->name('success');
+    Route::get('/cancel', [IndexController::class, 'index'])->name('cancel');
 });
 
 Route::get('/email/verify', function () {
