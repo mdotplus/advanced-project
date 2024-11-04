@@ -14,7 +14,11 @@
                     </a>
                     <div class="shop__name">{{ $shop->name }}</div>
                 </div>
-                <img class="shop__image" src="{{ $shop->image_url }}" alt="店舗写真">
+                @if (is_null($shop->image_url))
+                    <div class="shop__no-image">NO IMAGE</div>
+                @else
+                    <img class="shop__image" src="{{ $shop->image_url }}" alt="店舗写真">
+                @endif
                 <div class="shop__hashtag">
                     <span class="shop__hashtag--area">#{{ $shop->area['area'] }}</span>
                     <span class="shop__hashtag--category">#{{ $shop->category['category'] }}</span>
