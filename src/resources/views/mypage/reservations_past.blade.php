@@ -45,7 +45,7 @@
                     </div>
                 </div>
             </div>
-            <form class="reservations-past-card__review" action="/review" method="post">
+            <form class="reservations-past-card__review" action="/review" method="get">
                 @csrf
                 <input type="hidden" name="reservation_id" value="{{ $shop->id }}">
                 @if (in_array($shop->id, $reviewedReservationIds))

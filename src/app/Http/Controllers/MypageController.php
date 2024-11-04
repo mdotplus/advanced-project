@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ReviewRequest;
 use App\Models\Shop;
 use App\Models\Favorite;
 use App\Models\Reservation;
@@ -43,7 +44,7 @@ class MypageController extends Controller
         ]);
     }
 
-    public function reviewUpdate(Request $request)
+    public function reviewUpdate(ReviewRequest $request)
     {
         if($request->review_id) {
             Review::find($request->review_id)->update($request->all());
@@ -53,5 +54,4 @@ class MypageController extends Controller
 
         return redirect('mypage');
     }
-
 }

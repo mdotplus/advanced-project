@@ -49,7 +49,7 @@
                         <option value=4 {{ $review->five_point_scale === 4 ? 'selected' : '' }}>★★★★</option>
                         <option value=5 {{ $review->five_point_scale === 5 ? 'selected' : '' }}>★★★★★</option>
                     </select>
-                    <textarea name="comment" rows="10" cols="30">{{ $review->comment }}</textarea>
+                    <textarea name="comment" rows="8" cols="30">{{ $review->comment }}</textarea>
                 @else
                     <input type="hidden" name="review_id" value="">
                     <select class="review__point" name="five_point_scale">
@@ -60,7 +60,10 @@
                         <option value=4>★★★★</option>
                         <option value=5>★★★★★</option>
                     </select>
-                    <textarea name="comment" rows="10" cols="30" placeholder="コメント"></textarea>
+                    @error ('five_point_scale')
+                        <div class="error">{{ $message }}</div>
+                    @enderror
+                    <textarea name="comment" rows="8" cols="30" placeholder="コメント">{{ old('comment') }}</textarea>
                 @endif
             </div>
             <input type="hidden" name="reservation_id" value="{{ $reservedShop->id }}">
