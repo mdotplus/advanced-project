@@ -35,7 +35,7 @@ Route::group(['middleware' => ['verified', 'auth']], function () {
 
     Route::controller(MypageController::class)->group(function () {
         Route::get('/mypage', 'mypage');
-        Route::post('/review', 'review');
+        Route::get('/review', 'review');
         Route::post('/review/update', 'reviewUpdate');
     });
 

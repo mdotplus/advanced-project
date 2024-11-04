@@ -124,5 +124,5 @@
 .error {
     color: #eb3223;
     font-weight: bold;
-    margin-left: 10px;
+    margin: 0 0 5px 10px;
 }
