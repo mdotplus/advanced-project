@@ -168,13 +168,20 @@
 .shop-card__genre {
     width: 20%;
 }
+.shop-card__name {
+    overflow: hidden;
+}
 
 .shop-card__name--element,
 .shop-card__area--element,
 .shop-card__genre--element {
+    width: 100%;
     display: inline-block;
     font-size: 22px;
     font-weight: bold;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
     padding-top: 5px;
 }
 

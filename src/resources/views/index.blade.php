@@ -33,7 +33,9 @@
                 @endif
                 <div class="card__contents">
                     <div class="card__id" hidden>{{ $shop->id }}</div>
-                    <div class="card__name">{{ $shop->name }}</div>
+                    <div class="card__name-frame">
+                        <div class="card__name">{{ $shop->name }}</div>
+                    </div>
                     <div class="card__hashtag">
                         #<span class="card__hashtag--area">{{ $shop->area['area'] }}</span>
                         #<span class="card__hashtag--category">{{ $shop->category['category'] }}</span>

@@ -78,9 +78,16 @@
     padding: 15px;
 }
 
+.card__name-frame {
+    overflow: hidden;
+}
+
 .card__name {
     font-size: 18px;
     font-weight: bold;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .card__hashtag {

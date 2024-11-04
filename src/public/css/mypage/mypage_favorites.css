@@ -41,9 +41,18 @@
     padding: 15px;
 }
 
+.reservations-past-card__name-frame {
+    width: 100%;
+    height: 35px;
+    overflow: hidden;
+}
+
 .favorites-card__name {
     font-size: 18px;
     font-weight: bold;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .favorites-card__hashtag {
