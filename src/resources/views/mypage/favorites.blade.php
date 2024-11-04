@@ -4,7 +4,11 @@
         @foreach ($shops as $shop)
             @if (in_array($shop->id, $favoriteShopIds))
                 <div class="favorites-card card-{{ $shop->id }}">
-                    <img class="favorites-card__image" src="{{ $shop->image_url }}" alt="店舗写真">
+                    @if (is_null($shop->image_url))
+                        <div class="favorites-card__no-image">NO IMAGE</div>
+                    @else
+                        <img class="favorites-card__image" src="{{ $shop->image_url }}" alt="店舗写真">
+                    @endif
                     <div class="favorites-card__contents">
                         <div class="card__id" hidden>{{ $shop->id }}</div>
                         <div class="favorites-card__name">{{ $shop->name }}</div>
