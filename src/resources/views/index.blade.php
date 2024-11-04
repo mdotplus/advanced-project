@@ -48,7 +48,11 @@
                         </form>
                         <form class="card__favorite" action="/favorite/{{ Auth::id() }}/{{ $shop->id }}/home" method="post">
                             @csrf
-                            <button class="card__favorite-button" type="submit">
+                            @if (Auth::check())
+                                <button class="card__favorite-button" type="submit">
+                            @else
+                                <button class="card__favorite-button--guest" type="button">
+                            @endif
                                 @if (in_array($shop->id, $favoriteShopIds))
                                     <image class="card__favorite--heart-image" src="{{ asset('img/heart-red.svg') }}" alt="赤色のハート">
                                 @else
