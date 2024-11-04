@@ -95,5 +95,5 @@
             <button class="reservation__button" type="submit">変更を保存する</button>
         </form>
     </div>
-    <script src="{{ asset('/js/detail.js') }}"></script>
+    <script src="{{ asset('/js/reservation_modify.js') }}"></script>
 @endsection
