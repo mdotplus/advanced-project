@@ -14,17 +14,24 @@ const tomorrowFormatted = [
     ('00' + (tomorrow.getDate())).slice(-2)
 ].join('-');
 
-console.log(tomorrowFormatted);
 selectDate.setAttribute('min', tomorrowFormatted);
+
+if (selectDate.value) {
+    summaryDate.textContent = selectDate.value;
+}
+if (selectTime.value) {
+    summaryTime.textContent = selectTime.value;
+}
+if (selectNumber.value) {
+    summaryNumber.textContent = selectNumber.value + '人';
+}
 
 selectDate.addEventListener('input', () => {
     summaryDate.textContent = selectDate.value;
 });
-
 selectTime.addEventListener('input', () => {
     summaryTime.textContent = selectTime.value;
 });
-
 selectNumber.addEventListener('input', () => {
     summaryNumber.textContent = selectNumber.value + '人';
 });
