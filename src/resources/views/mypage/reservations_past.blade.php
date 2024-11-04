@@ -4,7 +4,11 @@
         @foreach ($reservedShopsPast as $shop)
             <div class="reservations-past-card card-{{ $shop->shop_id }}">
                 <div class="reservations-past-card__shop">
-                    <img class="reservations-past-card__image" src="{{ $shop->shop->image_url }}" alt="店舗写真">
+                    @if (is_null($shop->shop->image_url))
+                        <div class="reservations-past-card__no-image">NO IMAGE</div>
+                    @else
+                        <img class="reservations-past-card__image" src="{{ $shop->shop->image_url }}" alt="店舗写真">
+                    @endif
                     <div class="reservations-past-card__contents">
                         <div class="card__id" hidden>{{ $shop->shop_id }}</div>
                         <div class="reservations-past-card__name">{{ $shop->shop->name }}</div>
