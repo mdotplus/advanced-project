@@ -11,7 +11,9 @@
                     @endif
                     <div class="reservations-past-card__contents">
                         <div class="card__id" hidden>{{ $shop->shop_id }}</div>
-                        <div class="reservations-past-card__name">{{ $shop->shop->name }}</div>
+                        <div class="reservations-past-card__name-frame">
+                            <div class="reservations-past-card__name">{{ $shop->shop->name }}</div>
+                        </div>
                         <div class="reservations-past-card__click-contents">
                             <form class="reservations-past-card__detail" action="/detail/{{ $shop->shop_id }}/mypage" method="get">
                                 @csrf
