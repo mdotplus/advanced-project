@@ -26,7 +26,11 @@
     <div class="cards">
         @foreach ($shops as $shop)
             <div class="card card-{{ $shop->id }}">
-                <img class="card__image" src="{{ $shop->image_url }}" alt="店舗写真">
+                @if (is_null($shop->image_url))
+                    <div class="card__no-image">NO IMAGE</div>
+                @else
+                    <img class="card__image" src="{{ $shop->image_url }}" alt="店舗写真">
+                @endif
                 <div class="card__contents">
                     <div class="card__id" hidden>{{ $shop->id }}</div>
                     <div class="card__name">{{ $shop->name }}</div>
