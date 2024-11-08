@@ -146,13 +146,13 @@
                 </div>
                 <div class="reservation__summary">
                     <div class="reservation__summary--labels">
-                        <span>Shop</span>
-                        <span>Date</span>
-                        <span>Time</span>
-                        <span>Number</span>
+                        <span class="reservation__summary--labels-name">Shop</span>
+                        <span class="reservation__summary--labels-date">Date</span>
+                        <span class="reservation__summary--labels-time">Time</span>
+                        <span class="reservation__summary--labels-number">Number</span>
                     </div>
                     <div class="reservation__summary--contents">
-                        <span>{{ $shop->name }}</span>
+                        <span class="reservation__summary--contents-name">{{ $shop->name }}</span>
                         <span class="reservation__summary--contents-date">-</span>
                         <span class="reservation__summary--contents-time">-</span>
                         <span class="reservation__summary--contents-number">-</span>
