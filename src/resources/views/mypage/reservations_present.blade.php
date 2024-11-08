@@ -10,13 +10,13 @@
             </div>
             <div class="reservation__summary--flex-frame">
                 <div class="reservation__summary--labels">
-                    <span>Shop</span>
-                    <span>Date</span>
-                    <span>Time</span>
-                    <span>Number</span>
+                    <span class="reservation__summary--labels-name">Shop</span>
+                    <span class="reservation__summary--labels-date">Date</span>
+                    <span class="reservation__summary--labels-time">Time</span>
+                    <span class="reservation__summary--labels-number">Number</span>
                 </div>
                 <div class="reservation__summary--contents">
-                    <span>{{ $shop->shop->name }}</span>
+                    <span class="reservation__summary--contents-name">{{ $shop->shop->name }}</span>
                     <span class="reservation__summary--contents-date">{{ $shop->date }}</span>
                     <span class="reservation__summary--contents-time">{{ substr($shop->time, 0, 5) }}</span>
                     <span class="reservation__summary--contents-number">{{ $shop->number }}人</span>

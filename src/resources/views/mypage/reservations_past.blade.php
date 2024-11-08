@@ -34,9 +34,9 @@
                 </div>
                 <div class="reservations-past-card__summary">
                     <div class="reservations-past-card__summary--labels">
-                        <span>Date</span>
-                        <span>Time</span>
-                        <span>Number</span>
+                        <span class="reservations-past-card__summary--labels-date">Date</span>
+                        <span class="reservations-past-card__summary--labels-time">Time</span>
+                        <span class="reservations-past-card__summary--labels-number">Number</span>
                     </div>
                     <div class="reservations-past-card__summary--contents">
                         <span class="reservations-past-card__summary--contents-date">{{ $shop->date }}</span>

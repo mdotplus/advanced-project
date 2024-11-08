@@ -14,6 +14,7 @@
 .title-group {
     display: flex;
     align-items: center;
+    width: 100%;
     margin: 20px 0 10px;
 }
 
@@ -38,7 +39,7 @@
 .shop__name {
     font-size: 24px;
     font-weight: bold;
-    margin-left: 10px;
+    margin-left: 25px;
 }
 
 .shop__no-image {
@@ -54,6 +55,7 @@
 .shop__image {
     width: 100%;
     height: 400px;
+    object-fit: cover;
 }
 
 .shop__hashtag {
@@ -217,13 +219,37 @@
     padding: 30px 20px 30px;
 }
 
-.reservation__summary div span {
+.reservation__summary--labels {
+    width: 20%;
+    min-width: 80px;
+}
+
+.reservation__summary--labels-name,
+.reservation__summary--labels-date,
+.reservation__summary--labels-time,
+.reservation__summary--labels-number {
     display: block;
-    margin: 5px;
+    margin: 15px 0;
 }
 
 .reservation__summary--contents {
+    width: 80%;
+    overflow: hidden;
     margin-left: 30px;
+}
+
+.reservation__summary--contents-name,
+.reservation__summary--contents-date,
+.reservation__summary--contents-time,
+.reservation__summary--contents-number {
+    display: block;
+    margin: 15px 0;
+}
+
+.reservation__summary--contents-name {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .reservation__button {
