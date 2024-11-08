@@ -116,13 +116,29 @@
     padding: 15px 20px 15px;
 }
 
-.reservations-past-card__summary div span {
+.reservations-past-card__summary--labels {
+    width: 20%;
+    min-width: 80px;
+}
+
+.reservations-past-card__summary--labels-date,
+.reservations-past-card__summary--labels-time,
+.reservations-past-card__summary--labels-number {
     display: block;
-    margin: 20px;
+    margin: 10px 0;
 }
 
 .reservations-past-card__summary--contents {
-    margin-left: 30px;
+    width: 80%;
+    overflow: hidden;
+    padding-left: 10px;
+}
+
+.reservations-past-card__summary--contents-date,
+.reservations-past-card__summary--contents-time,
+.reservations-past-card__summary--contents-number {
+    display: block;
+    margin: 10px 0;
 }
 
 .reservations-past-card__review {

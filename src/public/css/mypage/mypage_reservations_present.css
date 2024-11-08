@@ -32,6 +32,7 @@
 
 .reservation__summary--labels {
     width: 20%;
+    min-width: 80px;
 }
 
 .reservation__summary--labels-name,
