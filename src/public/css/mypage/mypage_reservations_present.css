@@ -30,13 +30,36 @@
     display: flex;
 }
 
-.reservation__summary--flex-frame div span {
+.reservation__summary--labels {
+    width: 20%;
+}
+
+.reservation__summary--labels-name,
+.reservation__summary--labels-date,
+.reservation__summary--labels-time,
+.reservation__summary--labels-number {
     display: block;
     margin: 5px;
 }
 
 .reservation__summary--contents {
-    margin-left: 30px;
+    width: 80%;
+    overflow: hidden;
+    padding-left: 10px;
+}
+
+.reservation__summary--contents-name,
+.reservation__summary--contents-date,
+.reservation__summary--contents-time,
+.reservation__summary--contents-number {
+    display: block;
+    margin: 5px;
+}
+
+.reservation__summary--contents-name {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .reservation__summary--button-change {
