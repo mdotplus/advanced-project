@@ -40,6 +40,7 @@
     width: 100%;
     height: 75px;
     border-radius: 5px 0 0 0;
+    object-fit: cover;
 }
 
 .reservations-past-card__contents {
