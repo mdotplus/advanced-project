@@ -5,7 +5,6 @@ namespace Database\Seeders;
 use App\Models\Authority;
 use Carbon\Carbon;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\DB;
 
 class AuthoritiesTableSeeder extends Seeder
@@ -17,23 +16,17 @@ class AuthoritiesTableSeeder extends Seeder
      */
     public function run()
     {
-        $param = [
-            'authority' => 1,
-        ];
+        $param = ['authority' => 1];
         if (!AuthoritiesTableSeeder::isExist($param)) {
             DB::table('authorities')->insert($param);
         }
 
-        $param = [
-            'authority' => 2,
-        ];
+        $param = ['authority' => 2];
         if (!AuthoritiesTableSeeder::isExist($param)) {
             DB::table('authorities')->insert($param);
         }
 
-        $param = [
-            'authority' => 3,
-        ];
+        $param = ['authority' => 3];
         if (!AuthoritiesTableSeeder::isExist($param)) {
             DB::table('authorities')->insert($param);
         }

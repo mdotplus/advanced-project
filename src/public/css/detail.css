@@ -1,0 +1,272 @@
+.contents {
+    display: flex;
+    justify-content: space-around;
+}
+
+.contents__left {
+    width: 45%;
+}
+
+.shop {
+    width: 100%;
+}
+
+.title-group {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin: 20px 0 10px;
+}
+
+.button-back {
+    position: relative;
+    width: 30px;
+    height: 30px;
+    border: none;
+    cursor: pointer;
+}
+
+.button-back__image {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 30px;
+    height: 30px;
+    border-radius: 4px;
+    box-shadow: 2px 2px 4px -2px;
+}
+
+.shop__name {
+    font-size: 24px;
+    font-weight: bold;
+    margin-left: 25px;
+}
+
+.shop__no-image {
+    color: #fff;
+    background: #ccc;
+    width: 100%;
+    height: 400px;
+    line-height: 400px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.shop__image {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+}
+
+.shop__hashtag {
+    margin-top: 10px;
+}
+
+.shop__hashtag,
+.shop__profile {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.reviews {
+    width: 100%;
+    margin-top: 40px;
+}
+
+.reviews__total-point--title {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.reviews__total-point--frame {
+    --one-scale-width: 35px;
+    padding-left: 10px;
+}
+.reviews__each-review--five-point-scale-frame {
+    --one-scale-width: 25px;
+    margin-right: 70px;
+}
+.reviews__total-point--frame,
+.reviews__each-review--five-point-scale-frame {
+    display: flex;
+    align-items: center;
+    height: calc(1 * var(--one-scale-width));
+}
+
+.reviews__total-point-star,
+.reviews__each-review-star {
+    position: relative;
+    z-index: 0;
+    display: inline-block;
+    white-space: nowrap;
+    color: #CCC;
+    font-size: var(--one-scale-width);
+    width: calc(5 * var(--one-scale-width));
+}
+.reviews__total-point-star:before,
+.reviews__total-point-star:after,
+.reviews__each-review-star:before,
+.reviews__each-review-star:after {
+    content: '★★★★★';
+}
+.reviews__total-point-star:after,
+.reviews__each-review-star:after {
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    color: #ffcf32;
+    width: calc(var(--point) * var(--one-scale-width));
+}
+
+.reviews__total-point-number,
+.reviews__each-review-number {
+    margin: 5px 0 0 20px;
+}
+
+.reviews__total-point-number--no-review {
+    font-size: 16px;
+}
+
+.reviews__total-point-number--average,
+.reviews__total-point-number--count {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.reviews__each-review--point {
+}
+
+.reviews__total-point-number--count {
+    margin-left: 5px;
+}
+
+.reviews__each-review {
+    margin: 10px 0 60px;
+}
+
+.reviews__each-review--frame {
+    padding: 20px 0 20px;
+}
+
+.reviews__each-review--inner-frame {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    font-size: 18px;
+}
+
+.reviews__each-review--user-name-suffix {
+    font-size: 14px;
+}
+
+.reviews__each-review--date {
+    font-size: 14px;
+}
+
+.reviews__each-review--comment {
+    background: #fff;
+    border-radius: 8px;
+    padding: 20px 15px;
+    margin-top: 10px;
+}
+
+.contents__right {
+    width: 45%;
+}
+
+.reservation {
+    position: fixed;
+    background: #3560f6;
+    width: 45%;
+    height: 600px;
+    border-radius: 10px;
+    padding-top: 30px;
+}
+
+.reservation__title {
+    color: #fff;
+    font-size: 24px;
+    font-weight: bold;
+    margin: 0 20px 0;
+}
+
+.reservation__input-contents {
+    display: flex;
+    flex-direction: column;
+    margin: 10px 20px 20px;
+}
+
+.reservation__date,
+.reservation__time,
+.reservation__number {
+    width: 97%;
+    height: 30px;
+    border: none;
+    border-radius: 5px;
+    margin: 5px 0 5px;
+}
+
+.reservation__summary {
+    display: flex;
+    color: #fff;
+    background: #5580f7;
+    width: 90%;
+    border-radius: 8px;
+    margin: 0 20px 0;
+    padding: 30px 20px 30px;
+}
+
+.reservation__summary--labels {
+    width: 20%;
+    min-width: 80px;
+}
+
+.reservation__summary--labels-name,
+.reservation__summary--labels-date,
+.reservation__summary--labels-time,
+.reservation__summary--labels-number {
+    display: block;
+    margin: 15px 0;
+}
+
+.reservation__summary--contents {
+    width: 80%;
+    overflow: hidden;
+    margin-left: 30px;
+}
+
+.reservation__summary--contents-name,
+.reservation__summary--contents-date,
+.reservation__summary--contents-time,
+.reservation__summary--contents-number {
+    display: block;
+    margin: 15px 0;
+}
+
+.reservation__summary--contents-name {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.reservation__button {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    color: #fff;
+    background: #003ff5;
+    width: 100%;
+    height: 50px;
+    border: none;
+    border-radius: 0 0 10px 10px;
+    cursor: pointer;
+}
+
+.error {
+    color: #eb3223;
+    font-weight: bold;
+    margin-left: 10px;
+}

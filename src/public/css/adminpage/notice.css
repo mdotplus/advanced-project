@@ -1,0 +1,61 @@
+.title {
+    width: 80%;
+    font-size: 20px;
+    font-weight: bold;
+    margin: 20px auto;
+}
+
+.notice-form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 80%;
+    margin: 20px auto;
+}
+
+.notice-form__group {
+    margin: 10px 0;
+}
+
+.notice-form__title-group {
+    width: 100%;
+}
+
+.notice-form__message-group {
+    width: 70%;
+}
+
+.notice-form__recipient-group {
+    width: 25%;
+}
+
+.notice-form__title {
+    width: 50%;
+    height: 40px;
+}
+
+.notice-form__message {
+    width: 100%;
+    height: 350px;
+}
+
+.notice-form__recipient {
+    width: 80%;
+    height: 300px;
+}
+
+.notice-form__button {
+    background: #3560f6;
+    color: #fff;
+    width: 100%;
+    height: 50px;
+    border: 1px solid #3560f6;
+    border-radius: 5px;
+    font-weight: bold;
+    margin-top: 30px;
+    cursor: pointer;
+}
+
+.error {
+    color: #eb3223;
+}

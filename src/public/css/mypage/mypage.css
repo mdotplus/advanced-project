@@ -1,0 +1,13 @@
+.mypage-contents {
+    display: flex;
+}
+
+.mypage-contents__left {
+    width: 50%;
+    paddding: 0 5px;
+}
+
+.mypage-contents__right {
+    width: 50%;
+    paddding: 0 5px;
+}
