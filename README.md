@@ -1,11 +1,52 @@
 # Rese
-![トップ画像]()
+
+![トップ画像](img/top.png)
 
 ## 概要
 
+Rese は、予約管理システムです。ユーザーが予約を簡単に管理できるようにするための機能を提供します。
+
 ## 機能一覧
 
+### ユーザー関連機能
+
+- ホームページ表示
+- ショップ詳細表示
+- お気に入り登録
+- マイページ表示
+- レビュー表示
+- レビュー更新
+
+### 予約関連機能
+
+- 予約作成
+- 予約削除
+- 予約変更
+
+### 管理者関連機能
+
+- 管理ページ表示
+- ユーザー情報更新
+- ユーザー削除
+- ショップ登録
+- ショップ更新
+- ショップ削除
+
+### 通知関連機能
+
+- メール通知送信
+
+### 支払い関連機能
+
+- 事前決済ページ
+
+### メール認証関連機能
+
+- メール認証
+- メール認証通知再送
+
 ## 使用技術
+
 - Docker
 - Laravel:8.83.8
 - Fortify:1.19.1
@@ -15,26 +56,44 @@
 - MySQL:8.0.26
 - phpMyAdmin
 
-## ER図
+## ER 図
+
 ![ER図](img/er.png)
 
 ## テーブル設計
-### Users
-|カラム名|型|PRIMARY KEY|UNIQUE KEY|NOT NULL|FOREIGN KEY|説明|
-|----|----|:--:|:--:|:--:|:--:|----|
-|id|unsigned bigint|○||○||主キー|
-|authority_id|unsigned bigint|||○|○|外部キー、通常の会員登録でのデフォルトは「3:利用者権限」|
-|name|varchar(255)|||○||ユーザー名|
-|email|varchar(255)||○|○||メールアドレス|
-|email_verified_at|timestamp|||||メール認証実行の有無|
-|password|varchar(255)|||○||パスワード|
-|two_factor_secret|text||||||
-|two_factor_recovery_codes|text||||||
-|two_factor_confirmed_at|timestamp||||||
-|remember_token|varchar(100)||||||
-|created_at|timestamp|||||登録日時|
-|updated_at|timestamp|||||更新日時|
-#### Usersテーブルのデフォルトユーザーについて
+
+### authorities
+
+| カラム名   | 型              | 説明                                  |
+| ---------- | --------------- | ------------------------------------- |
+| id         | UNSIGNED BIGINT | 主キー、自動インクリメント            |
+| authority  | INTEGER         | 1: 管理者 / 2: 店舗代表者 / 3: 利用者 |
+| created_at | TIMESTAMP       | レコード作成日時                      |
+| updated_at | TIMESTAMP       | レコード更新日時                      |
+
+### users
+
+| カラム名                  | 型              | 説明                                  |
+| ------------------------- | --------------- | ------------------------------------- |
+| id                        | UNSIGNED BIGINT | 主キー、自動インクリメント            |
+| authority_id              | UNSIGNED BIGINT | 外部キー、`authorities`テーブルに関連 |
+| name                      | VARCHAR(255)    | ユーザーの名前                        |
+| email                     | VARCHAR(255)    | ユニークなメールアドレス              |
+| email_verified_at         | TIMESTAMP       | メールアドレス確認日時                |
+| password                  | VARCHAR(255)    | パスワード                            |
+| tow_factor_secret         | text            |                                       |
+| tow_factor_recovery_codes | text            |                                       |
+| tow_factor_confirmed_at   | TIMESTAMP       |                                       |
+| remember_token            | VARCHAR(100)    |                                       |
+| created_at                | TIMESTAMP       | レコード作成日時                      |
+| updated_at                | TIMESTAMP       | レコード更新日時                      |
+| stripe_id                 | VARCHAR(255)    |                                       |
+| pm_type                   | VARCHAR(255)    |                                       |
+| pm_last_four              | VARCHAR(4)      |                                       |
+| trial_ends_at             | TIMESTAMP       |                                       |
+
+#### Users テーブルのデフォルトユーザーについて
+
 以下のデフォルトユーザーが登録されています。
 各ユーザーのメールアドレスとパスワードについては別途資料を確認してください。
 |id|デフォルトユーザー名|説明|設定環境|
@@ -44,28 +103,93 @@
 |3|testUser1|利用者権限のテスト用ユーザー|開発環境でのみ設定されます|
 |4|testUser2|利用者権限のテスト用ユーザー|開発環境でのみ設定されます|
 |5|testUser3|利用者権限のテスト用ユーザー|開発環境でのみ設定されます|
-### テーブル名
-|カラム名|型|PRIMARY KEY|UNIQUE KEY|NOT NULL|FOREIGN KEY|説明|
-|----|----|:--:|:--:|:--:|:--:|----|
-||||||||
-||||||||
-||||||||
+
+### areas
+
+| カラム名   | 型              | 説明                       |
+| ---------- | --------------- | -------------------------- |
+| id         | UNSIGNED BIGINT | 主キー、自動インクリメント |
+| area       | VARCHAR(255)    | エリア名                   |
+| created_at | TIMESTAMP       | レコード作成日時           |
+| updated_at | TIMESTAMP       | レコード更新日時           |
+
+### categories
+
+| カラム名   | 型              | 説明                       |
+| ---------- | --------------- | -------------------------- |
+| id         | UNSIGNED BIGINT | 主キー、自動インクリメント |
+| category   | VARCHAR(255)    | カテゴリー名               |
+| created_at | TIMESTAMP       | レコード作成日時           |
+| updated_at | TIMESTAMP       | レコード更新日時           |
+
+### shops
+
+| カラム名    | 型              | 説明                                 |
+| ----------- | --------------- | ------------------------------------ |
+| id          | UNSIGNED BIGINT | 主キー、自動インクリメント           |
+| user_id     | UNSIGNED BIGINT | 外部キー、`users`テーブルに関連      |
+| name        | VARCHAR(255)    | 店舗名                               |
+| area_id     | UNSIGNED BIGINT | 外部キー、`areas`テーブルに関連      |
+| category_id | UNSIGNED BIGINT | 外部キー、`categories`テーブルに関連 |
+| profile     | TEXT            | 店舗のプロフィール                   |
+| image_url   | TEXT            | 画像 URL、null 許可                  |
+| created_at  | TIMESTAMP       | レコード作成日時                     |
+| updated_at  | TIMESTAMP       | レコード更新日時                     |
+
+### favorites
+
+| カラム名   | 型              | 説明                            |
+| ---------- | --------------- | ------------------------------- |
+| id         | UNSIGNED BIGINT | 主キー、自動インクリメント      |
+| user_id    | UNSIGNED BIGINT | 外部キー、`users`テーブルに関連 |
+| shop_id    | UNSIGNED BIGINT | 外部キー、`shops`テーブルに関連 |
+| created_at | TIMESTAMP       | レコード作成日時                |
+| updated_at | TIMESTAMP       | レコード更新日時                |
+
+### reservations
+
+| カラム名       | 型              | 説明                               |
+| -------------- | --------------- | ---------------------------------- |
+| id             | UNSIGNED BIGINT | 主キー、自動インクリメント         |
+| user_id        | UNSIGNED BIGINT | 外部キー、`users`テーブルに関連    |
+| shop_id        | UNSIGNED BIGINT | 外部キー、`shops`テーブルに関連    |
+| date           | DATE            | 予約日                             |
+| time           | TIME            | 予約時間                           |
+| number         | INTEGER         | 予約人数                           |
+| paid_online_at | TIMESTAMP       | オンライン支払い日時、null 許可    |
+| created_at     | TIMESTAMP       | レコード作成日時                   |
+| updated_at     | TIMESTAMP       | レコード更新日時                   |
+| deleted_at     | TIMESTAMP       | レコード削除日時（ソフトデリート） |
+
+### reviews
+
+| カラム名         | 型              | 説明                                   |
+| ---------------- | --------------- | -------------------------------------- |
+| id               | UNSIGNED BIGINT | 主キー、自動インクリメント             |
+| reservation_id   | UNSIGNED BIGINT | 外部キー、`reservations`テーブルに関連 |
+| five_point_scale | INTEGER         | 5 段階評価                             |
+| comment          | TEXT            | コメント、null 許可                    |
+| created_at       | TIMESTAMP       | レコード作成日時                       |
+| updated_at       | TIMESTAMP       | レコード更新日時                       |
 
 ## URL
+
 - 開発環境：http://127.0.0.1/
-- 本番環境：http://
-- phpMyAdmin：http://〇.〇.〇.〇:8080/
-- MailHog：http://〇.〇.〇.〇:8025/
-※「〇.〇.〇.〇」には各環境のIPアドレスを入れてください。
+- 本番環境：http://15.168.13.218/
+- MailHog：http://15.168.13.218:8025/
 
 ## 開発環境構築
-### Dockerビルド
-1. `git clone git@github.com:mdotplus/〇〇〇〇〇〇.git`
+
+### Docker ビルド
+
+1. `git clone git@github.com:mdotplus/advanced-project.git`
 1. `docker compose up -d --build`
-### Laravel環境構築
+
+### Laravel 環境構築
+
 1. `docker compose exec php bash`
 1. `composer install`
-1. .env.exampleファイルを複製して.envファイルを作成し、データベースに関する環境変数を変更
+1. .env.example ファイルを複製して.env ファイルを作成し、環境変数を設定
 1. `php artisan key:generate`
 1. `php artisan migrate`
 1. `php artisan db:seed`
