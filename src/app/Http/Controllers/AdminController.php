@@ -68,8 +68,10 @@ class AdminController extends Controller
         $form = $request->all();
 
         if ($request->file('image') !== null) {
-            $filePath = basename($request->file('image')->store('public/img'));
-            $form['image_url'] = 'storage/img/' . $filePath;
+            /* $filePath = basename($request->file('image')->store('public/img')); */
+            $filePath = Storage::disk('s3')->putFile('rese-s3-mdp', $request->file('image'), 'public');
+            /* $form['image_url'] = 'storage/img/' . $filePath; */
+            $form['image_url'] = 'storage/img/' . Storage::disk('s3')->url($filePath);
         }
         unset($form['_token']);
 
